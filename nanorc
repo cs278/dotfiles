@@ -1,0 +1,10 @@
+# Disable word wrapping
+set nowrap
+
+# Tab size of 4
+set tabsize 4
+
+# Disable backups
+unset backup
+
+set smarthome
