@@ -33,6 +33,7 @@ install:
 	for file in *; do \
 		case "$$file" in \
 			"Makefile") \
+			"README*") \
 				echo "Skipping $$file"; \
 			;; \
 			*) \
