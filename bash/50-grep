@@ -8,3 +8,8 @@ GREP_OPTIONS+="--exclude-dir=.cvs "
 GREP_OPTIONS+="--exclude-dir=.git "
 GREP_OPTIONS+="--exclude-dir=.hg "
 GREP_OPTIONS+="--exclude-dir=.bzr "
+
+if [ -n $COLOUR ]
+then
+	GREP_OPTIONS+="--color=auto "
+fi
