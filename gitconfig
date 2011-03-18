@@ -1,0 +1,52 @@
+[user]
+	name = Chris Smith
+	email = chris@cs278.org
+
+[core]
+	excludesfile = /home/chris/.gitignore
+
+[color]
+	ui = True
+
+[merge]
+	log = True
+
+[alias]
+	ci = commit
+	co = checkout
+	st = status
+
+	whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+	whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+
+	# Add all unmerged files
+	unmerged-add = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+
+	# Prune all remotes
+	prune-all = !git remote | xargs -n 1 git remote prune
+
+	# <http://www.jukie.net/bart/blog/pimping-out-git-log>
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+
+	# git subdo pull
+	subdo = submodule foreach git
+
+	amend = commit --amend -C HEAD
+
+	pick = cherry-pick
+
+[url "git@github.com:cs278/"]
+	insteadOf = cs278:
+
+[url "git@github.com:phpbb/"]
+	insteadOf = phpbb:
+
+[url "git@github.com:kiddivocuhers/"]
+	insteadOf = kv:
+
+[url "git@github.com:kohana/"]
+	insteadOf = kohana:
+
+[status]
+	relativePaths = True
+	submodulesummary = 2
