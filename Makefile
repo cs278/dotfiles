@@ -32,8 +32,7 @@ install:
 	cd $(SRC) && \
 	for file in *; do \
 		case "$$file" in \
-			"Makefile") \
-			"README*") \
+			Makefile|README*) \
 				echo "Skipping $$file"; \
 			;; \
 			*) \
