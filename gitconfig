@@ -1,6 +1,6 @@
 [user]
 	name = Chris Smith
-	email = chris@cs278.org
+	# email is set by the EMAIL environment variable.
 
 [core]
 	excludesfile = /home/chris/.gitignore
