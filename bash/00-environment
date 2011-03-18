@@ -1,10 +1,10 @@
 # Standard environment settings
 
-NAME="Chris Smith";
-EMAIL="chris@cs278.org";
+export NAME="Chris Smith";
+export EMAIL="chris@cs278.org";
 
 # I'm a simpleton
-EDITOR="nano";
+export EDITOR="nano";
 
 # Bleeding ruby
 if [ -d /var/lib/gems/1.8/bin/ ] ; then
