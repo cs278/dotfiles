@@ -1,0 +1,2 @@
+# Use terminal emulator scrollback buffer
+termcapinfo xterm|xterms|xs|rxvt ti@:te@
