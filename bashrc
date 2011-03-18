@@ -58,12 +58,6 @@ fi
 # Include subfiles
 . ~/.bash/*
 
-local HOSTNAME=$(hostname --short 2> /dev/null || cat /etc/hostname)
-
-if [ -f ~/.bash/$HOSTNAME ]; then
-	. ~/.bash/$HOSTNAME
-fi
-
 # Reset prompt for now
 PS1='${debian_chroot:+($debian_chroot)}\u@\h:$(prompt_cwd)\$ '
 
