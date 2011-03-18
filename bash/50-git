@@ -1,0 +1,77 @@
+# http://railstips.org/blog/archives/2009/02/02/bedazzle-your-bash-prompt-with-git-info/
+function parse_git_branch
+{
+	ref=$(/usr/lib/git-core/git-symbolic-ref HEAD 2> /dev/null) || return
+#	cwd
+	echo -e "[$txtgrn"${ref#refs/heads/}"$txtrst]"
+}
+
+function git_prompt_cwd
+{
+	ref=$(git symbolic-ref HEAD 2> /dev/null) && (
+		suffix=$(git rev-parse --show-prefix);
+		path=$(realpath --strip "$(pwd)/$(git rev-parse --show-cdup)");
+		path=${path/#$HOME/"~"};
+		[[ -n $suffix ]] && suffix=${suffix:0:$((${#suffix} - 1))};
+
+		echo -n $path;
+		echo -ne " [$txtgrn"${ref#refs/heads/}"$txtrst] ";
+		echo -n $suffix;
+	) || (
+		path=$(pwd);
+		path=${path/#$HOME/"~"};
+		echo $path;
+	);
+}
+
+PS1='${debian_chroot:+($debian_chroot)}\u@\h:$(prompt_cwd)\$ '
+#PS1=${PS1:0:$((${#PS1} - 3))}
+#PS1="$PS1 \$(parse_git_branch)\$ "
+
+# http://www.jeetworks.org/node/52
+gcd()
+{
+	if [[ $(which git 2> /dev/null) ]]
+	then
+		STATUS=$(git status 2>/dev/null)
+
+		if [[ -z $STATUS ]]
+		then
+			return
+		fi
+
+		TARGET="./$(git rev-parse --show-cdup)$1"
+		#echo $TARGET
+		cd $TARGET
+	fi
+}
+_gcd()
+{
+	if [[ $(which git 2> /dev/null) ]]
+	then
+		STATUS=$(git status 2>/dev/null)
+		if [[ -z $STATUS ]]
+		then
+			return
+		fi
+
+		TARGET="./$(git rev-parse --show-cdup)"
+
+		if [[ -d $TARGET ]]
+		then
+			TARGET="$TARGET/"
+		fi
+
+		COMPREPLY=()
+		cur="${COMP_WORDS[COMP_CWORD]}"
+		prev="${COMP_WORDS[COMP_CWORD-1]}$2"
+		dirnames=$(cd $TARGET; compgen -o dirnames $2)
+		opts=$(for i in $dirnames; do  if [[ $i != ".git" ]]; then echo $i/; fi; done)
+
+		if [[ ${cur} == * ]] ; then
+			COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+			return 0
+		fi
+	fi
+}
+complete -o nospace -F _gcd gcd

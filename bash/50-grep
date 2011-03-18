@@ -1,0 +1,10 @@
+# Configure grep
+
+GREP_OPTIONS=""
+
+# Exclude VCS directories
+GREP_OPTIONS+="--exclude-dir=.svn "
+GREP_OPTIONS+="--exclude-dir=.cvs "
+GREP_OPTIONS+="--exclude-dir=.git "
+GREP_OPTIONS+="--exclude-dir=.hg "
+GREP_OPTIONS+="--exclude-dir=.bzr "

@@ -1,0 +1,13 @@
+# Ignore duplicates in history
+HISTCONTROL=ignoredups
+
+# Allow a huge file
+HISTFILESIZE=1000000000
+HISTSIZE=1000000
+
+# History appends on close
+shopt -s histappend
+
+# Write history after every command
+# <http://www.ukuug.org/events/linux2003/papers/bash_tips/>
+PROMPT_COMMAND+="history -a;"

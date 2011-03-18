@@ -1,0 +1,43 @@
+# ls
+alias ll='ls -l'
+alias la='ls -A'
+alias lla='ls -lA'
+alias l='ls -CF'
+alias dir='ls --format=vertical'
+alias vdir='ls --format=long'
+
+# ps
+alias ps='ps aux --forest';
+alias psgrep='ps aux | grep ';
+
+# free
+alias free='free -m';
+
+# gnome
+alias g='gnome-open &> /dev/null';
+
+if [ "`lsb_release -cs`" == "hardy" ]; then
+	alias g='gvfs-open';
+	alias gnome-open='gvfs-open';
+fi
+
+# CVS
+alias cvsup='cvs update -dP';
+
+# GPG
+alias sign='gpg --armour --detatch-sign';
+alias encme='gpg --encrypt -r chris@cs278.org';
+
+# Servers
+alias sandman='ssh sandman.cs278.org';
+#alias sandman-off='ssh sandman.cs278.org sudo poweroff';
+#alias sandman-on='ssh beast.cs278.org ./wake';
+alias beast='ssh beast.cs278.org';
+alias nemo='ssh nemo.cs278.org';
+alias prisoner='ssh prisoner.cs278.org';
+
+# Network Administration
+alias ban='sudo iptables -I INPUT -j DROP -s'
+alias unban='sudo iptables -D INPUT -j DROP -s'
+
+alias symfony='/usr/bin/env php ~/projects/symfony/bootstrapper/symfony.phar'

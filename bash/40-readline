@@ -1,0 +1,6 @@
+# Use a local inputrc file if it is available.
+
+if [ -e ~/.inputrc ]
+then
+	INPUTRC=~/.inputrc
+fi

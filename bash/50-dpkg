@@ -1,0 +1,9 @@
+# Options for Debian Packaging
+
+export GPGKEY=DFAD1033
+
+# Fixes debsign <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=322932>
+export GPG_TTY=$(tty)
+
+export DEBFULLNAME="$NAME";
+export DEBEMAIL="$EMAIL";

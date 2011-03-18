@@ -1,0 +1,12 @@
+# Standard environment settings
+
+NAME="Chris Smith";
+EMAIL="chris@cs278.org";
+
+# I'm a simpleton
+EDITOR="nano";
+
+# Bleeding ruby
+if [ -d /var/lib/gems/1.8/bin/ ] ; then
+	PATH="${PATH}:/var/lib/gems/1.8/bin/";
+fi
