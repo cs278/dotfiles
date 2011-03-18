@@ -56,7 +56,7 @@ if [ -d ~/bin ] ; then
 fi
 
 # Include subfiles
-. ~/.bash/*
+. ~/.bash/??-*
 
 # Reset prompt for now
 PS1='${debian_chroot:+($debian_chroot)}\u@\h:$(prompt_cwd)\$ '
