@@ -63,7 +63,4 @@ for file in ~/.bash/??-*; do
 	fi
 done
 
-# Reset prompt for now
-PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-
 unset COLOUR
