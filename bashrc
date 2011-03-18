@@ -59,6 +59,6 @@ fi
 . ~/.bash/??-*
 
 # Reset prompt for now
-PS1='${debian_chroot:+($debian_chroot)}\u@\h:$(prompt_cwd)\$ '
+PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 
 unset COLOUR
