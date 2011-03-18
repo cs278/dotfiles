@@ -13,3 +13,5 @@ if [ -n $COLOUR ]
 then
 	GREP_OPTIONS+="--color=auto "
 fi
+
+export GREP_OPTIONS
