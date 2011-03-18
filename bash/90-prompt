@@ -1,2 +1,3 @@
-# Default prompt
-PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+PROMPT_COMMAND='res=$?; if [ $res -ne 0 ] && [ $res -ne 128 ];then ERROR_FLAG=1;else ERROR_FLAG=;fi;'$PROMPT_COMMAND
+
+PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w ${ERROR_FLAG:+'${txtred}'}\$${ERROR_FLAG:+'${txtrst}'} '
