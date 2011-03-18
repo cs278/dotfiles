@@ -56,7 +56,12 @@ if [ -d ~/bin ] ; then
 fi
 
 # Include subfiles
-. ~/.bash/??-*
+for file in ~/.bash/??-*; do
+	if [ -f $file ]
+	then
+		. $file
+	fi
+done
 
 # Reset prompt for now
 PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
