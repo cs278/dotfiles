@@ -3,6 +3,8 @@
 # <http://forums.debian.net/viewtopic.php?f=20&t=53298>
 # <http://www.linuxfromscratch.org/lfs/view/6.2/chapter07/inputrc.html>
 # <http://dotfiles.org/~brendano/.inputrc>
+# <http://www.pixelbeat.org/settings/.inputrc>
+# <http://linuxart.com/log/archives/2005/10/13/super-useful-inputrc/>
 
 # Ctrl+x Ctrl+r to reload
 #"\C-x\C-r": re-read-init-file
