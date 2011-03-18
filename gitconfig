@@ -35,6 +35,10 @@
 
 	pick = cherry-pick
 
+	log = log --date=local
+	unstage = rm -r --cached .
+	uncommit = reset --soft HEAD^
+
 [url "git@github.com:cs278/"]
 	insteadOf = cs278:
 
