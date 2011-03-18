@@ -1,7 +1,19 @@
 # Standard environment settings
 
+case $(hostname --domain) in
+	kiddivouchers.local)
+		EMAIL="chris.smith@kiddivouchers.com"
+	;;
+	*.cs278.org|cs278.org)
+		EMAIL="chris@cs278.org"
+	;;
+	*)
+		echo "Unknown machine." >&2
+	;;
+esac
+
 export NAME="Chris Smith";
-export EMAIL="chris@cs278.org";
+export EMAIL;
 
 # I'm a simpleton
 export EDITOR="nano";
