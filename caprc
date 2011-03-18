@@ -1,0 +1,227 @@
+role :mail_smtp, "beast.cs278.org:1337", "nemo.cs278.org:1337", "sandman.cs278.org"
+role :mail_imap, "sandman.cs278.org"
+role :mail_smtp_lda, "sandman.cs278.org"
+role :mail_smtp, "beast.cs278.org:1337", "nemo.cs278.org:1337", "sandman.cs278.org"
+role :mail_smtp_gw, "beast.cs278.org:1337", "nemo.cs278.org:1337"
+role :dns, "beast.cs278.org:1337", "sandman.cs278.org"
+role :dhcp, "beast.cs278.org:1337"
+role :www, "sandman.cs278.org"
+role :servers, "beast.cs278.org:1337", "nemo.cs278.org:1337", "sandman.cs278.org"
+
+namespace :dhcp do
+	desc "Echo Leases"
+	task :leases, :roles => :dhcp do
+		run "cat /var/lib/misc/dnsmasq.leases"
+	end
+end
+
+namespace :sys do
+	desc "Free disc space"
+	task :df, :roles => :servers do
+		run "df -h"
+	end
+
+	desc "Free (real) disc space"
+	task :dfr, :roles => :servers do
+		run "df -h -t ext3 -t xfs -t ext2"
+	end
+
+	desc "Free memory"
+	task :free, :roles => :servers do
+		run "free -m"
+	end
+
+	desc "uptime"
+	task :uptime, :roles => :servers do
+		run "uptime"
+	end
+
+	desc "who"
+	task :who, :roles => :servers do
+		run "who"
+	end
+
+	desc "CPU Info"
+	task :cpuinfo, :roles => :servers do
+		run "cat /proc/cpuinfo"
+	end
+
+	desc "Mounts"
+	task :mounts, :roles => :servers do
+		run "mount"
+	end
+
+	namespace :swap do
+		desc "Swap Info"
+		task :info, :roles => :servers do
+			run "cat /proc/swaps"
+		end
+
+		desc "Swap Off"
+		task :off, :roles => :servers do
+			sudo "swapoff -a"
+		end
+
+		desc "Swap On"
+		task :on, :roles => :servers do
+			sudo "swapon -a"
+		end
+	end
+
+	namespace :apt do
+		desc "Update package lists"
+		task :update, :roles => :servers do
+			sudo "aptitude update"
+		end
+
+		desc "Download upgrade debs but do not install"
+		task :up, :roles => :servers do
+			update
+			sudo "aptitude upgrade -dy"
+		end
+
+		desc "Do upgrade"
+		task :doup, :roles => :servers do
+			sudo "aptitude upgrade -y"
+		end
+
+		desc "Perform any pending apt actions"
+		task :doit, :roles => :servers do
+			sudo "aptitude install -y"
+		end
+	end
+end
+
+namespace :net do
+	desc "Ban Hostname/IP from all servers"
+	task :ban, :roles => :servers do
+		set(:ipaddr) do
+			Capistrano::CLI.ui.ask "IP/Host: "
+		end
+		sudo "iptables -I INPUT -j DROP -s #{ipaddr}"
+	end
+
+	desc "Unban Hostname/IP from all servers"
+	task :unban, :roles => :servers do
+		set(:ipaddr) do
+			Capistrano::CLI.ui.ask "IP/Host: "
+		end
+		sudo "iptables -D INPUT -j DROP -s #{ipaddr}"
+	end
+
+	desc "List iptables"
+	task :list, :roles => :servers do
+		sudo "iptables -L INPUT"
+	end
+end
+
+namespace :mail do
+	desc "Get Mail Logs"
+	task :log, :roles => :mail do
+		run "cat /var/log/mail.info | tail"
+	end
+
+	namespace :imap do
+		desc "Reload Dovecot"
+		task :reload, :roles => :mail_imap do
+			sudo "/etc/init.d/dovecot reload"
+		end
+
+		desc "Restart Dovecot"
+		task :restart, :roles => :mail_imap do
+			sudo "/etc/init.d/dovecot restart"
+		end
+
+		desc "Get Dovecot Logs"
+		task :log, :roles => :mail_imap do
+			run "cat /var/log/mail.info | grep 'dovecot:' | tail"
+		end
+	end
+
+	namespace :lda do
+		desc "Reload postfix on LDA"
+		task :reload, :roles => :mail_smtp_lda do
+			sudo "postfix reload"
+		end
+
+		desc "Get Postfix Logs"
+		task :log, :roles => :mail_smtp_gw do
+			run "cat /var/log/mail.info | grep 'postfix/' | tail"
+		end
+	end
+
+	namespace :gw do
+		desc "Get Postfix Logs"
+		task :log, :roles => :mail_smtp_gw do
+			run "cat /var/log/mail.info | grep 'postfix/' | tail"
+		end
+
+		desc "Rebuild postfix config on gateways"
+		task :make, :roles => :mail_smtp_gw do
+			sudo "make -C /etc/postfix/"
+		end
+
+		desc "Dump Greyfix Triplets"
+		task :triplets, :roles => :mail_smtp_gw do
+			sudo "greyfix --dump-triplets"
+		end
+	end
+end
+
+namespace :dns do
+	desc "Edit Hosts"
+	task :hosts, :roles => :dns do
+		sudo "nano /etc/dnsmasq/hosts"
+	end
+
+	desc "Update dnsmasq Config"
+	task :update, :roles => :dns do
+		sudo "svn update /etc/dnsmasq"
+	end
+
+	desc "Reload dnsmasq"
+	task :reload, :roles => :dns do
+		update
+		sudo "pkill -SIGHUP dnsmasq"
+	end
+
+	desc "Restart dnsmasq"
+	task :restart, :roles => :dns do
+		update
+		sudo "/etc/init.d/dnsmasq restart"
+	end
+end
+
+namespace :www do
+	desc "Reload lighttpd"
+	task :lighttpd_reload, :roles => :www do
+		sudo "/etc/init.d/lighttpd reload"
+	end
+
+	desc "Reload apache2"
+	task :apache2_reload, :roles => :www do
+		sudo "/etc/init.d/apache2 reload"
+	end
+
+	desc "Reload web servers"
+	task :reload, :roles => :www do
+		apache2_reload
+		lighttpd_reload
+	end
+
+	desc "Restart lighttpd"
+	task :lighttpd_restart, :roles => :www do
+		sudo "/etc/init.d/lighttpd restart"
+	end
+
+	desc "Restart apache2"
+	task :apache2_restart, :roles => :www do
+		sudo "/etc/init.d/apache2 restart"
+	end
+
+	desc "Restart web servers"
+	task :restart, :roles => :www do
+		apache2_restart
+		lighttpd_restart
+	end
+end
