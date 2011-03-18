@@ -40,6 +40,9 @@ if [ "$TERM" != "dumb" ]; then
 	eval "`dircolors -b`"
 	alias ls='ls --color=auto'
 	alias grep='grep --color=auto'
+	COLOUR=y
+else
+	COLOUR=
 fi
 
 # Ensure tab completion is enabled if it is available.
@@ -63,3 +66,5 @@ fi
 
 # Reset prompt for now
 PS1='${debian_chroot:+($debian_chroot)}\u@\h:$(prompt_cwd)\$ '
+
+unset COLOUR
