@@ -2,4 +2,4 @@ PROMPT_COMMAND='res=$?; if [ $res -ne 0 ] && [ $res -ne 128 ];then ERROR_FLAG=1;
 
 PROMPT_COMMAND+='if [ "$USER" == "root" ]; then is_root=1; else is_root=; fi;'
 
-PS1='${debian_chroot:+($debian_chroot)}${is_root:+'${bakblk}${bldred}'}\u@\h:\w${is_root:+'${txtrst}'} ${ERROR_FLAG:+'${txtred}'}\$${ERROR_FLAG:+'${txtrst}'} '
+PS1='${ERROR_FLAG}${debian_chroot:+($debian_chroot)}${is_root:+\['${bakblk}${bldred}'\]}\u@\h:\w${is_root:+\['${txtrst}'\]} ${ERROR_FLAG:+\['${txtred}'\]}\$${ERROR_FLAG:+\['${txtrst}'\]} '
