@@ -1,6 +1,6 @@
-# Makefile to install dotfiles into a home directory.
-#
-# Inspired by <https://github.com/ryanb/dotfiles/blob/master/Rakefile>
+#!/bin/bash
+
+# Symlink a directory tree into a target directory.
 #
 # Copyright © 2011 Chris Smith
 #
@@ -22,17 +22,37 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-SRC ?= ".dotfiles/"
-DESTDIR ?= "$(HOME)"
+# $ find -type f ! -path "*/.*" ! -name "Makefile" ! -name "README.md" -printf "%P\0.%P\0"
 
-.PHONY: install
+TARGET="${1%/}";
 
-install:
-	cd $(DESTDIR) && \
-	cd $(SRC) && \
-	find \
-		-type f \
-		! -path "*/.*" \
-		! -name "Makefile" \
-		! -name "README.md" \
-		-printf $(SRC)"/%P\n.%P\n" | bash .lntree $(DESTDIR)
+IFS=$'\n';
+
+while read src;
+do
+	read dest;
+
+	echo "'$src' => '$dest'";
+
+	dir=$(readlink -mn "$dest/..");
+	dir="${dir#${PWD}}";
+	dir="${dir#/}";
+
+	prefix='';
+
+	if [ -n "$dir" ];
+	then
+		mkdir -p "$TARGET/$dir";
+
+		depth=$(echo "${dir}" | tr '/' '\n' | wc -l)
+
+		for i in $(seq 1 $depth);
+		do
+			prefix+='../';
+		done
+	fi
+
+	ln -s "$prefix$src" "$TARGET/$dest";
+done
+
+unset IFS;
