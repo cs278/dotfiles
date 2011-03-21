@@ -1,9 +1,9 @@
 # Ignore duplicates in history
-HISTCONTROL=ignoredups
+export HISTCONTROL=ignoredups
 
 # Allow a huge file
-HISTFILESIZE=1000000000
-HISTSIZE=1000000
+export HISTFILESIZE=1000000000
+export HISTSIZE=1000000
 
 # History appends on close
 shopt -s histappend
