@@ -1,2 +1,8 @@
 # Use terminal emulator scrollback buffer
 termcapinfo xterm|xterms|xs|rxvt ti@:te@
+
+# Disable the visual bell
+vbell off
+
+# Be gone splash screen
+startup_message off
