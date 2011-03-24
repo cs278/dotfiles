@@ -6,3 +6,9 @@ vbell off
 
 # Be gone splash screen
 startup_message off
+
+# <https://bugs.launchpad.net/ubuntu/+source/screen/+bug/338722/comments/10>
+hardstatus string "[screen:%n%?] %h"
+termcapinfo  * '' 'hs:ts=\E_:fs=\E\\:ds=\E_\E\\'
+termcapinfo xterm 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
+
