@@ -1,4 +1,4 @@
-PROMPT_COMMAND='res=$?; if [ $res -ne 0 ] && [ $res -ne 128 ];then ERROR_FLAG=1;else ERROR_FLAG=;fi;'$PROMPT_COMMAND
+PROMPT_COMMAND='res=$?; if [ $res -gt 0 ] && [ $res -lt 128 ];then ERROR_FLAG=1;else ERROR_FLAG=;fi;'$PROMPT_COMMAND
 
 PROMPT_COMMAND+='if [ "$USER" == "root" ]; then is_root=1; else is_root=; fi;'
 
