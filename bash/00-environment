@@ -1,7 +1,7 @@
 # Standard environment settings
 
 case $(hostname --domain) in
-	kiddivouchers.local)
+	*.kv-is.local|kv-is.local)
 		EMAIL="chris.smith@kiddivouchers.com"
 	;;
 	*.cs278.org|cs278.org)
