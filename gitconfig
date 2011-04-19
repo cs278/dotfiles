@@ -46,6 +46,11 @@
 	unstage = rm -r --cached .
 	uncommit = reset --soft HEAD^
 
+	# Maintenance commands
+
+	# <https://github.com/avar/linode-etc/blob/master/bin/cron/git-repack-and-gc-dir>
+	packup = "! git repack -qAd; git gc -q --prune; git count-objects -v"
+
 [url "git@github.com:cs278/"]
 	insteadOf = cs278:
 
