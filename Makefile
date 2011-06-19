@@ -31,7 +31,7 @@ install:
 	cd $(DESTDIR) && \
 	cd $(SRC) && \
 	find \
-		-type f \
+		-type f -or -type l \
 		! -path "*/.*" \
 		! -name "Makefile" \
 		! -name "README.md" \
