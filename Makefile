@@ -35,4 +35,6 @@ install:
 		! -path "*/.*" \
 		! -name "Makefile" \
 		! -name "README.md" \
+		! -name "dotfiles.key" \
+		! -name "secure" \
 		-printf $(SRC)"/%P\n.%P\n" | bash .lntree $(DESTDIR)
