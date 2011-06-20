@@ -31,6 +31,7 @@ OPTS+=! -name "bin"
 OPTS+=! -name "README.md"
 OPTS+=! -name "dotfiles.key*"
 OPTS+=! -name "secure"
+OPTS+=! -name "lost+found"
 OPTS+= -printf "$(SRC)/%P\n.%P\n"
 
 
