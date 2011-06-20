@@ -28,7 +28,7 @@ DESTDIR ?= "$(HOME)"
 OPTS=! -path "*/.*"
 OPTS+=! -name "Makefile"
 OPTS+=! -name "README.md"
-OPTS+=! -name "dotfiles.key"
+OPTS+=! -name "dotfiles.key*"
 OPTS+=! -name "secure"
 OPTS+= -printf "$(SRC)/%P\n.%P\n"
 
