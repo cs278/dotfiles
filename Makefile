@@ -27,6 +27,7 @@ DESTDIR ?= "$(HOME)"
 
 OPTS=! -path "*/.*"
 OPTS+=! -name "Makefile"
+OPTS+=! -name "bin"
 OPTS+=! -name "README.md"
 OPTS+=! -name "dotfiles.key*"
 OPTS+=! -name "secure"

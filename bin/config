@@ -1,0 +1,10 @@
+#!/bin/bash
+
+UUID=654fc3fb-9649-4f2b-9a48-60ea0e39019e
+DEVICE=/dev/disk/by-uuid/$UUID
+MAP=home-$UUID
+
+KEY_UUID=88b76640-7d40-47a1-b281-b2de41336d57
+KEY_DEVICE=`readlink -f /dev/disk/by-uuid/$KEY_UUID`
+KEY_MOUNT=$(grep "^$KEY_DEVICE" /proc/mounts | cut -d" " -f2)
+

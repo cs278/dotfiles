@@ -1,0 +1,31 @@
+#!/bin/bash
+
+. `dirname $0`/config
+
+# Gain root first
+sudo -v
+
+# Recombine the key
+getKey()
+{
+	ARGS=""
+
+	ARGS+=`readlink -f ~/.dotfiles/dotfiles.key`
+	ARGS+=$(find ~/.local -name "dotfiles.key.???" -printf " %p")
+	ARGS+=" "$(getPortableKey)
+
+	gfcombine -o- $ARGS
+}
+
+getPortableKey()
+{
+	if [ -z $KEY_MOUNT ];
+	then
+		return
+	fi
+
+	echo `readlink -f $KEY_MOUNT/dotfiles.key`
+}
+
+getKey | sudo cryptsetup luksOpen --key-file=- $DEVICE $MAP &&
+sudo mount /dev/mapper/$MAP ~/.dotfiles/secure

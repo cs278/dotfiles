@@ -1,0 +1,9 @@
+#!/bin/bash
+
+. `dirname $0`/config
+
+sudo -v
+
+sudo umount /dev/mapper/$MAP
+sudo cryptsetup luksClose $MAP
+#sudo eject
