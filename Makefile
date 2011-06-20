@@ -25,16 +25,20 @@
 SRC ?= ".dotfiles"
 DESTDIR ?= "$(HOME)"
 
+OPTS=! -path "*/.*"
+OPTS+=! -name "Makefile"
+OPTS+=! -name "README.md"
+OPTS+=! -name "dotfiles.key"
+OPTS+=! -name "secure"
+OPTS+= -printf "$(SRC)/%P\n.%P\n"
+
+
 .PHONY: install
 
 install:
 	cd $(DESTDIR) && \
 	cd $(SRC) && \
-	find \
-		-type f -or -type l \
-		! -path "*/.*" \
-		! -name "Makefile" \
-		! -name "README.md" \
-		! -name "dotfiles.key" \
-		! -name "secure" \
-		-printf $(SRC)"/%P\n.%P\n" | bash .lntree $(DESTDIR)
+	find -type f $(OPTS) \
+		| bash .lntree $(DESTDIR) && \
+	find -type l $(OPTS) \
+		| bash .lntree $(DESTDIR)
