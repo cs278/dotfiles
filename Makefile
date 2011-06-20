@@ -24,9 +24,6 @@
 
 SRC ?= ".dotfiles"
 DESTDIR ?= "$(HOME)"
-UUID ?= 2c45ad09-98ec-46b5-9cf9-9b8bdbfa8cd8
-
-MOUNT=$(DESTDIR)/$(SRC)/secure
 
 OPTS=! -path "*/.*"
 OPTS+=! -name "Makefile"
@@ -45,12 +42,3 @@ install:
 		| bash .lntree $(DESTDIR) && \
 	find -type l $(OPTS) \
 		| bash .lntree $(DESTDIR)
-
-.PHONY: mount
-mount:
-	grep $(MOUNT) /proc/mounts || (\
-		mount=$$(grep ^`readlink -f /dev/disk/by-uuid/$(UUID)` /proc/mounts | cut -d" " -f 2 || ( \
-				sudo mount /dev/disk/by-uuid/$(UUID) 
-			)	
-		); echo $$mount \
-	)
