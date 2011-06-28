@@ -1,10 +1,19 @@
 #!/bin/bash
 
+# UUID of encrypted partition on removable device.
 UUID=654fc3fb-9649-4f2b-9a48-60ea0e39019e
+
+# Name of device mapper block device.
+MAP=dotfiles-$UUID
+
+# Symlink to block device.
 DEVICE=/dev/disk/by-uuid/$UUID
-MAP=home-$UUID
 
+# UUID of removable device which will provide a share of the decryption key.
 KEY_UUID=88b76640-7d40-47a1-b281-b2de41336d57
-KEY_DEVICE=`readlink -f /dev/disk/by-uuid/$KEY_UUID`
-KEY_MOUNT=$(grep "^$KEY_DEVICE" /proc/mounts | cut -d" " -f2)
 
+# Symlink to key block device.
+KEY_DEVICE=`readlink -f /dev/disk/by-uuid/$KEY_UUID`
+
+# Location where key device is mounted.
+KEY_MOUNT=$(grep "^$KEY_DEVICE" /proc/mounts | cut -d" " -f2)
