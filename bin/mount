@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. `dirname $0`/config
+. `dirname $0`/../dotfiles.conf
 
 # Gain root first
 sudo -v
