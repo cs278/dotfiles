@@ -1,9 +1,9 @@
 #!/bin/bash
 
-. `dirname $0`/../dotfiles.conf
+. `dirname $0`/../dotfiles.conf || exit 1
 
-sudo -v
+sudo -v || exit 2
 
-sudo umount /dev/mapper/$MAP
-sudo cryptsetup luksClose $MAP
+sudo umount /dev/mapper/$MAP || exit 3
+sudo cryptsetup luksClose $MAP || exit 4
 #sudo eject
