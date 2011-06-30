@@ -25,7 +25,8 @@
 SRC ?= ".dotfiles"
 DESTDIR ?= "$(HOME)"
 
-OPTS=! -path "*/.*"
+OPTS=
+OPTS+=! -path "*/.*"
 OPTS+=! -name "Makefile"
 OPTS+=! -name "bin"
 OPTS+=! -name "README.md"
@@ -40,7 +41,7 @@ OPTS+= -printf "$(SRC)/%P\n.%P\n"
 install:
 	cd $(DESTDIR) && \
 	cd $(SRC) && \
-	find -type f $(OPTS) \
+	find $(OPTS) -type f \
 		| bash .lntree $(DESTDIR) && \
-	find -type l $(OPTS) \
+	find $(OPTS) -type l \
 		| bash .lntree $(DESTDIR)
