@@ -27,12 +27,14 @@ DESTDIR ?= "$(HOME)"
 
 OPTS=
 OPTS+= -xdev
-OPTS+=! -path "*/.*"
-OPTS+=! -name "Makefile"
-OPTS+=! -name "bin"
-OPTS+=! -name "README.md"
-OPTS+=! -name "dotfiles.key*"
-OPTS+= -printf "$(SRC)/%P\n.%P\n"
+
+EXPR=
+EXPR+=! -path "*/.*"
+EXPR+=! -name "Makefile"
+EXPR+=! -name "bin"
+EXPR+=! -name "README.md"
+EXPR+=! -name "dotfiles.key*"
+EXPR+= -printf "$(SRC)/%P\n.%P\n"
 
 
 .PHONY: install
@@ -40,7 +42,7 @@ OPTS+= -printf "$(SRC)/%P\n.%P\n"
 install:
 	cd $(DESTDIR) && \
 	cd $(SRC) && \
-	find $(OPTS) -type f \
+	find $(OPTS) -type f $(EXPR) \
 		| bash .lntree $(DESTDIR) && \
-	find $(OPTS) -type l \
+	find $(OPTS) -type l $(EXPR) \
 		| bash .lntree $(DESTDIR)
