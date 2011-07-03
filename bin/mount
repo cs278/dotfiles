@@ -32,4 +32,5 @@ sudo mount /dev/mapper/$MAP ~/.dotfiles/secure
 
 SSH_PUBKEY=".pub"
 
-find ~/.ssh/ -name "*$SSH_PUBKEY" | awk "{print substr(\$0,1,length(\$0)-length(\"$SSH_PUBKEY\"))}" | xargs ssh-add
+# Add SSH keys to agent with 12 hour timeout.
+find ~/.ssh/ -name "*$SSH_PUBKEY" | awk "{print substr(\$0,1,length(\$0)-length(\"$SSH_PUBKEY\"))}" | xargs ssh-add -t 43200
