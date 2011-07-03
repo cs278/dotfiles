@@ -20,12 +20,14 @@ Host *.kv-is.local
 	IdentityFile ~/.ssh/chris.smith@widerplan.com.pub
 
 	ForwardAgent yes
+	ForwardX11 yes
 	GSSAPIAuthentication yes
 
 Host *.cs278.org
 	IdentityFile ~/.ssh/chris@cs278.org.pub
 
 	ForwardAgent yes
+	ForwardX11 yes
 
 Host *
 	# By default I am 'chris'.
