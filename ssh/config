@@ -1,6 +1,3 @@
-Host localhost
-	NoHostAuthenticationForLocalhost yes
-
 Host socks-proxy
 	HostName sandman.cs278.org
 	DynamicForward 9999
@@ -65,6 +62,9 @@ Host *
 	ServerAliveInterval 10
 	ServerAliveCountMax 6
 	TCPKeepAlive yes
+
+	# Ignore host fingerprints when connecting to loopback.
+	NoHostAuthenticationForLocalhost yes
 
 	# Multiplexing.
 	ControlMaster auto
