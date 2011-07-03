@@ -29,3 +29,7 @@ getPortableKey()
 
 getKey | sudo cryptsetup luksOpen --key-file=- $DEVICE $MAP &&
 sudo mount /dev/mapper/$MAP ~/.dotfiles/secure
+
+SSH_PUBKEY=".pub"
+
+find ~/.ssh/ -name "*$SSH_PUBKEY" | awk "{print substr(\$0,1,length(\$0)-length(\"$SSH_PUBKEY\"))}" | xargs ssh-add
