@@ -1,105 +1,67 @@
-Host *
-# I don't care for this
-HashKnownHosts no
-# <http://www.tipcache.com/tip/Reuse_an_existing_ssh_connection_9.html>
-ControlMaster auto
-ControlPath /tmp/ssh-%r@%h:%p
-# Keep alive for 2 weeks
-ServerAliveInterval 60
-ServerAliveCountMax 20160
-CheckHostIP no
-GSSAPIAuthentication no
+Host localhost
+	NoHostAuthenticationForLocalhost yes
+
+Host socks-proxy
+	HostName sandman.cs278.org
+	DynamicForward 9999
+	ControlPath ~/.ssh/sockets/socks-proxy
+
+Host eva.cs278.org
+	Port 23
+
+Host reporting.kv-is.local
+	HostName 94.175.247.82
+
+Host *.kv-is.local
+	User chris.smith
+
+	IdentityFile ~/.ssh/chris.smith@widerplan.com.pub
+
+	ForwardAgent yes
+	GSSAPIAuthentication yes
 
 Host *.cs278.org
-ForwardAgent yes
+	IdentityFile ~/.ssh/chris@cs278.org.pub
 
-Host hamer.dreamhost.com
 	ForwardAgent yes
-	User cs278_lec
 
-Host sandman.cs278.org
-#LocalForward 8080 127.0.0.1:8080
-LocalForward 8090 192.168.0.2:80
-DynamicForward 8080
-#ForwardX11 yes
-ForwardAgent yes
+Host *
+	# By default I am 'chris'.
+	User chris
 
-Host beast.cs278.org
-Port 1337
-ForwardX11 no
-#DynamicForward 8080
-LocalForward 8081 jack.cs278.org:80
+	# Do not check IP addresses of known hosts.
+	CheckHostIP no
 
-Host nemo.cs278.org
-Port 1337
+	# Compress everything by default.
+	Compression yes
 
-Host benjamin.cs278.org
-User root
+	# Ensure secure defaults.
+	ForwardAgent no
+	ForwardX11 no
 
-Host ronnie.cs278.org
-User root
+	# Preset identities.
+	IdentityFile ~/.ssh/%r@%h.pub
+	IdentityFile ~/.ssh/%h.pub
+	#IdentityFile ~/.ssh/id_rsa.pub
 
-Host pilgrim.cs278.org
+	# Disable GSSAPI authentication.
+	GSSAPIAuthentication no
 
-Host trooper.cs278.org
+	# Authentication methods.
+	PreferredAuthentications gssapi-with-mic,publickey,keyboard-interactive,password
 
-Host *.ex.ac.uk
-User cs278
-ForwardX11 yes
-CheckHostIP yes
+	# Send additional environment variables.
+	SendEnv NAME
+	SendEnv EMAIL
+	SendEnv EDITOR
+	SendEnv LANG LC_*
 
-Host xmedia.ex.ac.uk
-User cs278
+	# Keep Alives
+	ServerAliveInterval 10
+	ServerAliveCountMax 6
+	TCPKeepAlive yes
 
-Host ithome.ex.ac.uk
-LocalForward 8082 loki.ex.ac.uk:80
-LocalForward 2525 smtp.ex.ac.uk:80
-ForwardX11 yes
-#DynamicForward 8099
-
-Host project-minerva.org
-User minerva
-LocalForward 9999 127.0.0.1:8000
-LocalForward 1125 127.0.0.1:25
-
-#Host oj.dreamhost.com
-
-Host prisoner.cs278.org
-User cs278
-LocalForward 3307 mysql.cs278.org:3306
-# Keep Alive for 2 weeks
-ServerAliveInterval 60
-ServerAliveCountMax 20160
-ControlMaster no
-
-Host kvsf01.kiddivouchers.com
-HostName 81.136.189.90
-Port 2426
-User SmithC
-#Compression yes
-#LocalForward 3311 kwf02:3306
-#LocalForward 8001 kwf02:80
-#LocalForward 3389 kwf02:3389
-LocalForward 33306 localhost:3306
-#LocalForward 30022 kwf02-linux:22
-
-Host kwf02.kiddivouchers.com
-#HostName 81.136.189.90
-HostName 192.168.1.128
-User SmithC
-Compression yes
-ProxyCommand ssh kvsf01.kiddivouchers.com exec nc %h %p
-LocalForward 30080 localhost:80
-
-Host web1.kiddivouchers.com
-HostName 78.136.62.25
-
-
-Host www.kiddivouchers.com
-Port 722
-User chris
-
-Host lotuselancentral.com
-HostName 109.108.143.50
-Port 2020
-User lotusela
+	# Multiplexing.
+	ControlMaster auto
+	ControlPath ~/.ssh/sockets/%l-%r@%h:%p
+	ControlPersist 600
