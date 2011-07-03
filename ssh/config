@@ -6,6 +6,11 @@ Host socks-proxy
 	DynamicForward 9999
 	ControlPath ~/.ssh/sockets/socks-proxy
 
+Host github.com
+	User git
+
+	IdentityFile ~/.ssh/github.pub
+
 Host eva.cs278.org
 	Port 23
 
