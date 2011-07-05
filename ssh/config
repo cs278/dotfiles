@@ -8,11 +8,35 @@ Host github.com
 
 	IdentityFile ~/.ssh/github.pub
 
+Host flat.cs278.org
+	Port 24
+
 Host eva.cs278.org
 	Port 23
 
+Host benjamin.cs278.org
+	User root
+
+Host ronnie.cs278.org
+	User root
+
 Host reporting.kv-is.local
 	HostName 94.175.247.82
+
+Host kwf02-linux.kv-is.local
+	#HostName 10.0.17.1
+	ProxyCommand ssh reporting.kv-is.local exec nc %h %p
+
+Host web1.widerplan.com
+	HostName 78.136.62.25
+
+Host web2.widerplan.com
+	HostName 127.0.0.1
+
+Host lotuselancentral.com
+	HostName 109.108.143.50
+	Port 2020
+	User lotusela
 
 Host *.kv-is.local
 	User chris.smith
