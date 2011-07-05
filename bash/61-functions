@@ -1,0 +1,18 @@
+# Functions which are to be used like aliases
+
+# URL encode a string.
+# http://stackoverflow.com/questions/296536/urlencode-from-a-bash-script
+urlencode()
+{
+	local value=$@
+
+	python -c "import urllib; print urllib.quote('''$value''')"
+}
+
+# Search Google
+goog()
+{
+	local query=$(urlencode $@)
+
+	g "http://www.google.com/search?q=$query"
+}
