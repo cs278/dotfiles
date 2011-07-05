@@ -1,3 +1,5 @@
+#LogLevel DEBUG1
+
 Host socks-proxy
 	HostName sandman.cs278.org
 	DynamicForward 9999
