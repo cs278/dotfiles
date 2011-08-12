@@ -75,3 +75,6 @@
 	submodulesummary = 2
 [push]
 	default = upstream
+
+[rerere]
+	enabled = True
