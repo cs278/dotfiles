@@ -53,6 +53,9 @@
 	# <https://github.com/avar/linode-etc/blob/master/bin/cron/git-repack-and-gc-dir>
 	packup = "! git repack -qAd; git gc -q --prune; git count-objects -v"
 
+	# Pushs up to a new branch matching the current branch name and sets upstream tracking, assumes a default remote of 'origin'.
+	pushup = "!sh -c 'remote=$1; [ -z $remote ] && remote=origin; branch=$(git symbolic-ref -q HEAD) || exit 1; branch=${branch##refs/heads/}; git push --set-upstream $remote $branch' -"
+
 [url "git@github.com:cs278/"]
 	insteadOf = cs278:
 
