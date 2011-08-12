@@ -56,6 +56,8 @@
 	# Pushs up to a new branch matching the current branch name and sets upstream tracking, assumes a default remote of 'origin'.
 	pushup = "!sh -c 'remote=$1; [ -z $remote ] && remote=origin; branch=$(git symbolic-ref -q HEAD) || exit 1; branch=${branch##refs/heads/}; git push --set-upstream $remote $branch' -"
 
+	resolved = "! git ls-files --unmerged | awk '{print $4}' | uniq | xargs git add"
+
 [url "git@github.com:cs278/"]
 	insteadOf = cs278:
 
