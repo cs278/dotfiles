@@ -1,5 +1,118 @@
-PROMPT_COMMAND='res=$?; if [ $res -gt 0 ] && [ $res -lt 128 ];then ERROR_FLAG=1;else ERROR_FLAG=;fi;'$PROMPT_COMMAND
+PROMPT_COMMAND='res=$?; if [ $res -gt 0 ] && [ $res -lt 128 ];then ERROR_FLAG=1;else ERROR_FLAG=;fi;'
 
-PROMPT_COMMAND+='if [ "$USER" == "root" ]; then is_root=1; else is_root=; fi;'
+function zparse_git_branch {
+	# symbolic-ref will fail if on a detached head.
+	git status &> /dev/null || return
+    ref=$(git symbolic-ref HEAD 2> /dev/null || echo "detatched")
+    echo " ("${ref#refs/heads/}") "
+}
 
-PS1='${debian_chroot:+($debian_chroot)}${is_root:+\['${bakblk}${bldred}'\]}\u@\h:\w${is_root:+\['${txtrst}'\]} ${ERROR_FLAG:+\['${txtred}'\]}\$${ERROR_FLAG:+\['${txtrst}'\]} '
+function parse_git_suffix {
+    suffix=$(git rev-parse --show-prefix 2> /dev/null) || return
+    [[ -n $suffix ]] && echo "${suffix:0:$((${#suffix} - 1))}"
+}
+
+function parse_git_cwd {
+    PWD=$(realpath --strip "$(pwd)/$(git rev-parse --show-cdup 2> /dev/null)")
+    GIT_PWD=${PWD/#$HOME/\~}
+    echo $GIT_PWD
+}
+
+function get_git_dir
+{
+	if [ -z "$GIT_DIR" ]; then
+		local dir=.
+
+		until [ "$dir" -ef / ];
+		do
+			if [ -d "$dir/.git/" ];
+			then
+				echo "$dir/.git"
+				return
+			fi
+
+			dir="../$dir"
+		done
+
+		return 1
+	else
+		echo "$GIT_DIR"
+	fi
+}
+
+function get_git_branch {
+	local file="$1/HEAD" head
+
+	if [ -f "$file" ];
+	then
+		head=$(< "$file")
+
+		if [[ $head == ref:\ refs/heads/* ]];
+		then
+			echo "${head#*/*/}"
+			return
+		elif [ ! -z "$head" ];
+		then
+			echo "detached"
+			return
+		fi
+	fi
+
+	echo "unknown"
+}
+
+function parse_git_branch
+{
+	local git_branch=$1
+
+	echo -e " ($git_branch) "
+}
+
+function bash_ps1
+{
+	local git_cwd git_dir git_branch;
+
+	git_dir=$(get_git_dir)
+
+	if [ $? -eq 0 ];
+	then
+		git_branch=$(get_git_branch "$git_dir")
+		git_cwd=$(parse_git_cwd)" $txtblu($git_branch)$txtrst "$(parse_git_suffix)
+	fi
+
+	PS1=
+	PS1+='${debian_chroot:+($debian_chroot)}'
+
+	if [ $EUID -eq 0 ];
+	then
+		PS1+="\[${bakred}${bldwht}\]"
+	fi
+
+	PS1+='\u@\h'
+
+	if [ $EUID -eq 0 ];
+	then
+		PS1+="\[$txtrst\]"
+	fi
+
+	PS1+=':'
+
+	if [ ! -z "$git_cwd" ];
+	then
+		PS1+="$git_cwd"
+	else
+		PS1+='\w'
+	fi
+
+	PS1+=' ${ERROR_FLAG:+\['${txtred}'\]}\$${ERROR_FLAG:+\['${txtrst}'\]} '
+}
+
+#PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:$COLOR_BLUE_BOLD$CWD_PREFIX$COLOR_GREEN$CWD_MID$COLOR_BLUE_BOLD$CWD_SUFFIX$COLOR_WHITE"
+
+#PS1='${debian_chroot:+($debian_chroot)}${is_root:+\['${bakblk}${bldred}'\]}\u@\h:\w${is_root:+\['${txtrst}'\]} ${ERROR_FLAG:+\['${txtred}'\]}\$${ERROR_FLAG:+\['${txtrst}'\]} '
+
+#PS1='${debian_chroot:+($debian_chroot)}${is_root:+\['${bakblk}${bldred}'\]}\u@\h:'"\$(parse_git_cwd)\$(parse_git_branch)\$(parse_git_suffix)"'${is_root:+\['${txtrst}'\]} ${ERROR_FLAG:+\['${txtred}'\]}\$${ERROR_FLAG:+\['${txtrst}'\]} '
+
+PS1=' $ '
+
+PROMPT_COMMAND+='bash_ps1;'
