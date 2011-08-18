@@ -85,7 +85,7 @@ function bash_ps1
 
 	if [ $EUID -eq 0 ];
 	then
-		PS1+="\[${bakred}${bldwht}\]"
+		PS1+="\[${bakred}\]\[${bldwht}\]"
 	fi
 
 	PS1+='\u@\h'
@@ -101,7 +101,7 @@ function bash_ps1
 	then
 		PS1+="$git_cwd"
 	else
-		PS1+='\w'
+		PS1+="\[$txtblu\]\w\[$txtrst\]"
 	fi
 
 	PS1+=' ${ERROR_FLAG:+\['${txtred}'\]}\$${ERROR_FLAG:+\['${txtrst}'\]} '
