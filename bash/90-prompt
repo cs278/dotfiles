@@ -54,11 +54,12 @@ function get_git_branch {
 		elif [ ! -z "$head" ];
 		then
 			echo "detached"
-			return
+			return 1
 		fi
 	fi
 
 	echo "unknown"
+	return 2
 }
 
 function parse_git_branch
@@ -70,14 +71,29 @@ function parse_git_branch
 
 function bash_ps1
 {
-	local git_cwd git_dir git_branch;
+	local git_cwd git_dir git_branch git_branch_ps1;
 
 	git_dir=$(get_git_dir)
 
 	if [ $? -eq 0 ];
 	then
 		git_branch=$(get_git_branch "$git_dir")
-		git_cwd=$(parse_git_cwd)" $txtblu($git_branch)$txtrst "$(parse_git_suffix)
+		local r=$?
+
+		git_branch_ps1=' '
+
+		if [ $r -gt 0 ];
+		then
+			git_branch_ps1+="\[$txtred\]"
+		else
+			git_branch_ps1+="\[$txtgrn\]"
+		fi
+
+		git_branch_ps1+="($git_branch)"
+		git_branch_ps1+="\[$txtrst\]"
+		git_branch_ps1+=' '
+
+		git_cwd="\[$txtblu\]"$(parse_git_cwd)"\[$txtrst\]$git_branch_ps1\[$txtylw\]"$(parse_git_suffix)"\[$txtrst\]"
 	fi
 
 	PS1=
