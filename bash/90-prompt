@@ -11,6 +11,7 @@ function parse_git_cwd {
     echo $GIT_PWD
 }
 
+# Stolen from <http://aaroncrane.co.uk/2009/03/git_branch_prompt/>
 function get_git_dir
 {
 	if [ -z "$GIT_DIR" ]; then
