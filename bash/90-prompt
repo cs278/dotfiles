@@ -1,12 +1,5 @@
 PROMPT_COMMAND='res=$?; if [ $res -gt 0 ] && [ $res -lt 128 ];then ERROR_FLAG=1;else ERROR_FLAG=;fi;'$PROMPT_COMMAND
 
-function zparse_git_branch {
-	# symbolic-ref will fail if on a detached head.
-	git status &> /dev/null || return
-    ref=$(git symbolic-ref HEAD 2> /dev/null || echo "detatched")
-    echo " ("${ref#refs/heads/}") "
-}
-
 function parse_git_suffix {
     suffix=$(git rev-parse --show-prefix 2> /dev/null) || return
     [[ -n $suffix ]] && echo "${suffix:0:$((${#suffix} - 1))}"
@@ -60,13 +53,6 @@ function get_git_branch {
 
 	echo "unknown"
 	return 2
-}
-
-function parse_git_branch
-{
-	local git_branch=$1
-
-	echo -e " ($git_branch) "
 }
 
 function bash_ps1
