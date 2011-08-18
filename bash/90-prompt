@@ -1,4 +1,4 @@
-PROMPT_COMMAND='res=$?; if [ $res -gt 0 ] && [ $res -lt 128 ];then ERROR_FLAG=1;else ERROR_FLAG=;fi;'
+PROMPT_COMMAND='res=$?; if [ $res -gt 0 ] && [ $res -lt 128 ];then ERROR_FLAG=1;else ERROR_FLAG=;fi;'$PROMPT_COMMAND
 
 function zparse_git_branch {
 	# symbolic-ref will fail if on a detached head.
