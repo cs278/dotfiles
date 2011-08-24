@@ -15,18 +15,23 @@ function parse_git_cwd {
 function get_git_dir
 {
 	if [ -z "$GIT_DIR" ]; then
-		local dir=.
+		local dir=$1
 
-		until [ "$dir" -ef / ];
-		do
-			if [ -d "$dir/.git/" ];
-			then
-				echo "$dir/.git"
-				return
-			fi
+		dir=${dir:=.}
 
-			dir="../$dir"
-		done
+		if [ -e "$dir" ];
+		then
+			until [ "$dir" -ef / ];
+			do
+				if [ -d "$dir/.git/" ];
+				then
+					echo "$dir/.git"
+					return
+				fi
+
+				dir="$dir/.."
+			done
+		fi
 
 		return 1
 	else
