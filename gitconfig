@@ -17,6 +17,9 @@
 	st = status
 	br = branch -vv
 
+	# Finds the branch the local branch tracks.
+	tracking = "!git for-each-ref --format=\"%(upstream:short)\" \"$(git symbolic-ref -q HEAD)\" | head -n1"
+
 	# Automagical fast-forward from tracked branch.
 	ff = "!u() { git for-each-ref --format=\"%(upstream:short)\" \"$(git symbolic-ref -q HEAD)\" | head -n1; }; git merge --ff-only `u`"
 
