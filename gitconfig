@@ -40,6 +40,13 @@
 
 	amend = commit --amend -C HEAD
 
+	# Detach from branch to test out a merge or whatnot.
+	detach = checkout HEAD^0
+
+	# Inspection
+	lost = !"git fsck | awk '/dangling commit/ {print $3}' | git show --format='SHA1: %C(yellow)%h%Creset %f' --stdin | awk '/SHA1/ {sub(\"SHA1: \", \"\"); print}'"
+	heads = !"git log origin/master.. --format='%Cred%h%Creset;%C(yellow)%an%Creset;%H;%Cblue%f%Creset' | git name-rev --stdin --always --name-only | column -t -s';'"
+
 	pick = cherry-pick
 
 	log = log --date=local
