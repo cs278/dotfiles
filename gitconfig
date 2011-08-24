@@ -37,6 +37,7 @@
 
 	# <http://www.jukie.net/bart/blog/pimping-out-git-log>
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	pg = "!git lg \"$(git tracking)\".."
 
 	# git subdo pull
 	subdo = submodule foreach git
