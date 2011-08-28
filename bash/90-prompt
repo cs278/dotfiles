@@ -129,4 +129,11 @@ function bash_ps1
 
 PS1=' $ '
 
-PROMPT_COMMAND+='bash_ps1;'
+$(which realpath);
+
+if [ $? -gt 0 ];
+then
+	PS1='${debian_chroot:+($debian_chroot)}${is_root:+\['${bakblk}${bldred}'\]}\u@\h:\['${txtblu}'\]\w\['${txtrst}'\]${is_root:+\['${txtrst}'\]} ${ERROR_FLAG:+\['${txtred}'\]}\$${ERROR_FLAG:+\['${txtrst}'\]} '
+else
+	PROMPT_COMMAND+='bash_ps1;'
+fi
