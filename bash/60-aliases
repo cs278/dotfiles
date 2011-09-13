@@ -41,3 +41,8 @@ alias ban='sudo iptables -I INPUT -j DROP -s'
 alias unban='sudo iptables -D INPUT -j DROP -s'
 
 alias symfony='/usr/bin/env php ~/projects/symfony/bootstrapper/symfony.phar'
+
+if [ -f ~/projects/phrozn/bin/phrozn.php ];
+then
+	alias phr='/usr/bin/env php ~/projects/phrozn/bin/phrozn.php'
+fi
