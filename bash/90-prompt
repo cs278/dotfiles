@@ -129,7 +129,7 @@ function bash_ps1
 
 PS1=' $ '
 
-$(which realpath);
+which realpath &>/dev/null
 
 if [ $? -gt 0 ];
 then
