@@ -24,6 +24,9 @@ fi
 # CVS
 alias cvsup='cvs update -dP';
 
+# Pretty decodes JSON from stdin
+alias json='python -mjson.tool';
+
 # GPG
 alias sign='gpg --armour --detatch-sign';
 alias encme='gpg --encrypt -r chris@cs278.org';
