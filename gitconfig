@@ -42,6 +42,9 @@
 	# git subdo pull
 	subdo = submodule foreach git
 
+	# Find parent repository of sub module
+	subup = "!sh -c 'cd .. && cd "$(git rev-parse --show-cdup)" && echo $(pwd)' -"
+
 	amend = commit --amend -C HEAD
 
 	# Detach from branch to test out a merge or whatnot.
