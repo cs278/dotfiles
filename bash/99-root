@@ -1,0 +1,9 @@
+if [[ $(id -u) = 0 ]];
+then
+	# We are root, disable stupid commands!
+	for cmd in poweroff reboot; do
+		alias $cmd='echo "Just what do you think you’re doing, Dave?"'
+	done
+
+	shopt -o noclobber
+fi
