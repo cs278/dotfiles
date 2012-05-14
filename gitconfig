@@ -84,7 +84,7 @@
 [url "git@github.com:phpbb/"]
 	insteadOf = phpbb:
 
-[url "git@github.com:kiddivocuhers/"]
+[url "git@github.com:kiddivouchers/"]
 	insteadOf = kv:
 
 [url "git@github.com:kohana/"]
