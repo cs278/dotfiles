@@ -16,3 +16,13 @@ goog()
 
 	g "http://www.google.com/search?q=$query"
 }
+
+# Field awk
+# http://serverfault.com/questions/3743/what-useful-things-can-one-add-to-ones-bashrc#answer-5551
+fawk()
+{
+    first="awk '{print "
+    last="}'"
+    cmd="${first}\$${1}${last}"
+    eval $cmd
+}
