@@ -45,6 +45,8 @@ alias unban='sudo iptables -D INPUT -j DROP -s'
 
 alias symfony='/usr/bin/env php ~/projects/symfony/bootstrapper/symfony.phar'
 
+alias urldecode='/usr/bin/env php -r "echo urldecode(stream_get_contents(STDIN)), chr(13);"'
+
 if [ -f ~/projects/phrozn/bin/phrozn.php ];
 then
 	alias phr='/usr/bin/env php ~/projects/phrozn/bin/phrozn.php'
