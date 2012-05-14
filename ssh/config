@@ -33,7 +33,7 @@ Host web1.widerplan.com
 	HostName 78.136.62.25
 
 Host web2.widerplan.com
-	HostName 127.0.0.1
+	HostName 78.136.62.26
 
 Host lotuselancentral.com
 	HostName 109.108.143.50
