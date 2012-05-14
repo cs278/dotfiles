@@ -85,7 +85,7 @@
 	insteadOf = phpbb:
 
 [url "git@github.com:kiddivouchers/"]
-	insteadOf = kv:
+	insteadOf = wp:
 
 [url "git@github.com:kohana/"]
 	insteadOf = kohana:
