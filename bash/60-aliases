@@ -51,3 +51,6 @@ if [ -f ~/projects/phrozn/bin/phrozn.php ];
 then
 	alias phr='/usr/bin/env php ~/projects/phrozn/bin/phrozn.php'
 fi
+
+alias dos2unix='sed -i 's/$//''
+alias trim='sed -i '' 's/[[:space:]]*$//g''
