@@ -98,3 +98,6 @@
 
 [rerere]
 	enabled = True
+
+[github]
+	user = cs278
