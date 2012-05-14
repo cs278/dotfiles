@@ -18,6 +18,9 @@ export EMAIL;
 # I'm a simpleton
 export EDITOR="nano";
 
+# Ignore EOF until 3 key presses.
+export IGNOREEOF="2"
+
 # Bleeding ruby
 if [ -d /var/lib/gems/1.8/bin/ ] ; then
 	PATH="${PATH}:/var/lib/gems/1.8/bin/";
