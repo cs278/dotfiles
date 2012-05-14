@@ -17,6 +17,9 @@
 	st = status
 	br = branch -vv
 
+	# Shows what changes have been staged
+	staged = diff --cached
+
 	# Finds the branch the local branch tracks.
 	tracking = "!git for-each-ref --format=\"%(upstream:short)\" \"$(git symbolic-ref -q HEAD)\" | head -n1"
 
