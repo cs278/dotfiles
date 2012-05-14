@@ -54,3 +54,8 @@ fi
 
 alias dos2unix='sed -i 's/$//''
 alias trim='sed -i '' 's/[[:space:]]*$//g''
+
+if [ -f ~/projects/composer/bin/composer ];
+then
+	alias composer='~/projects/composer/bin/composer'
+fi
