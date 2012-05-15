@@ -14,7 +14,15 @@ alias psgrep='ps aux | grep ';
 alias free='free -m';
 
 # gnome
-alias g='gnome-open &> /dev/null';
+if which gnome-open > /dev/null;
+then
+	alias g='gnome-open &> /dev/null';
+fi
+
+if which xdg-open > /dev/null;
+then
+	alias g='xdg-open &> /dev/null';
+fi
 
 if [ "`lsb_release -cs`" == "hardy" ]; then
 	alias g='gvfs-open';
