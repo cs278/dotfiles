@@ -26,3 +26,38 @@ fawk()
     cmd="${first}\$${1}${last}"
     eval $cmd
 }
+
+save()
+{
+	while [[ -n $1 ]];
+	do
+		src=$1
+		dt=`date +%Y%m%d%H%M%S`
+
+		path=`dirname "$src"`
+		basename=`basename "$src"`
+		ext=$(echo "$basename" | awk -F. '{print $NF}')
+		filename=`basename "$basename" .$ext`
+
+		if [[ "$basename" == "$ext" ]];
+		then
+			# No extension
+			ext=
+		else
+			ext=".$ext"
+		fi
+
+#		echo "Path: $path"
+#		echo "Basename: $basename"
+#		echo "Filename: $filename"
+#		echo "Ext: $ext"
+
+		dst="$path/$filename.$dt$ext~"
+
+#		echo "$src -> $dst"
+
+		cp -a "$src" "$dst"
+
+		shift
+	done
+}
