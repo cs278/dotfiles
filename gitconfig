@@ -90,6 +90,7 @@
 
 [url "git@github.com:kiddivouchers/"]
 	insteadOf = wp:
+	insteadOf = https://github.com/kiddivouchers/
 
 [url "git@github.com:kohana/"]
 	insteadOf = kohana:
