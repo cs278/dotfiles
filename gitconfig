@@ -79,6 +79,9 @@
 
 	resolved = "! git ls-files --unmerged | awk '{print $4}' | uniq | xargs git add"
 
+[url "git://github.com/"]
+	insteadOf = gh:
+
 [url "git@github.com:cs278/"]
 	insteadOf = cs278:
 
