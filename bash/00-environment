@@ -2,7 +2,7 @@
 
 case $(hostname --domain) in
 	*.kv-is.local|kv-is.local)
-		EMAIL="chris.smith@kiddivouchers.com"
+		EMAIL="chris.smith@widerplan.com"
 	;;
 	*.cs278.org|cs278.org)
 		EMAIL="chris@cs278.org"
