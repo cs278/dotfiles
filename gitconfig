@@ -52,7 +52,11 @@
 	# Update/init all submodules
 	smu = submodule update --init --recursive
 
+	# Amend keeping the name commit message.
 	amend = commit --amend -C HEAD
+
+	# Amend and edit message.
+	reword = commit --amend
 
 	# Detach from branch to test out a merge or whatnot.
 	detach = checkout HEAD^0
