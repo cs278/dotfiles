@@ -83,6 +83,10 @@
 
 	resolved = "! git ls-files --unmerged | awk '{print $4}' | uniq | xargs git add"
 
+	# Credit the actual author
+	# https://speakerdeck.com/u/holman/p/git-and-github-secrets?slide=141
+	credit = !"_() { if [ -n \"$1\" ] && [ -n \"$2\" ]; then git commit --amend -C HEAD --author \"$1 <$2>\"; else echo \"Usage: name email\"; return 1; fi; }; _"
+
 [url "git://github.com/"]
 	insteadOf = gh:
 
