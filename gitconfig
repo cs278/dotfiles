@@ -22,6 +22,8 @@
 	staged = diff --cached
 	pushing = "!git diff `git tracking`..HEAD"
 
+	wdiff = diff --word-diff
+
 	# Finds the branch the local branch tracks.
 	tracking = "!git for-each-ref --format=\"%(upstream:short)\" \"$(git symbolic-ref -q HEAD)\" | head -n1"
 
