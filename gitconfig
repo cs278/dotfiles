@@ -73,6 +73,7 @@
 	log = log --date=local
 	unstage = rm -r --cached .
 	uncommit = reset --soft HEAD^
+	nuke = reset --hard
 
 	stat = count-objects -v
 
