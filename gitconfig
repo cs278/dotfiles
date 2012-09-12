@@ -124,3 +124,7 @@
 [diff "image"]
 	textconv = identify -verbose
 	cachetextconv = true
+
+[diff "json"]
+	# Render JSON using Python JSON Tool and fallback to cat
+	textconv = sh -c 'python -mjson.tool $1 2>/dev/null || cat $1' --

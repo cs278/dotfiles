@@ -2,3 +2,4 @@
 *.jpg diff=image
 *.jpeg diff=image
 *.gif diff=image
+*.json diff=json
