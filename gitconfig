@@ -3,8 +3,8 @@
 	# email is set by the EMAIL environment variable.
 
 [core]
-	excludesfile = ~/.gitignore
-	attributesfile = ~/.gitattributes
+	excludesfile = ~/.config/git/ignore
+	attributesfile = ~/.config/git/attributes
 
 [color]
 	ui = True
