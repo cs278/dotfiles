@@ -127,4 +127,4 @@
 
 [diff "json"]
 	# Render JSON using Python JSON Tool and fallback to cat
-	textconv = python -mjson.tool $1 2>/dev/null || cat $1
+	textconv = "json $1 2>/dev/null || cat $1"
