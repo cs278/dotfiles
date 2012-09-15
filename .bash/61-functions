@@ -39,7 +39,7 @@ save()
 		ext=$(echo "$basename" | awk -F. '{print $NF}')
 		filename=`basename "$basename" .$ext`
 
-		if [[ "$basename" == "$ext" ]];
+		if [[ "$basename" == "$ext" ]] || [[ "$basename" == ".$ext" ]];
 		then
 			# No extension
 			ext=
