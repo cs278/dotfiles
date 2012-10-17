@@ -1,0 +1,49 @@
+# Configures the cdpath environment variable, which is awesome.
+
+cdpath_unshift()
+{
+	# Adds the supplied path to the start of the CDPATH
+
+	if [ "${1:0:1}" = "/" ] && [ ! -d "${1}" ];
+	then
+		# Absolute path, that does not exist,
+		# keep the path clean by not adding it.
+		return
+	fi
+
+	if [ -z "$CDPATH" ];
+	then
+		CDPATH="$1"
+	else
+		CDPATH="$1:$CDPATH"
+	fi
+}
+
+cdpath_push()
+{
+	# Adds the supplied path to the end of the CDPATH
+
+	if [ "${1:0:1}" = "/" ] && [ ! -d "${1}" ];
+	then
+		# Absolute path, that does not exist,
+		# keep the path clean by not adding it.
+		return
+	fi
+
+	if [ -z "$CDPATH" ];
+	then
+		CDPATH="$1"
+	else
+		CDPATH="$CDPATH:$1"
+	fi
+}
+
+CDPATH=
+
+cdpath_unshift "$HOME"
+cdpath_unshift "$HOME/projects"
+
+# Favour current directory.
+cdpath_unshift .
+
+export CDPATH
