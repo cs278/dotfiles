@@ -53,11 +53,6 @@ if [ -f /etc/bash_completion ]; then
 	. /etc/bash_completion
 fi
 
-# Include personal bin folder in the executable path
-if [ -d ~/bin ] ; then
-	PATH="~/bin:${PATH}"
-fi
-
 # Include subfiles
 for file in ~/.bash/??-*; do
 	if [ -f $file ]
