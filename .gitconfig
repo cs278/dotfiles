@@ -97,7 +97,8 @@
 [url "git@github.com:cs278/"]
 	insteadOf = cs278:
 
-[url "git@github.com:phpbb/"]
+[url "git://github.com/phpbb/"]
+	insteadOf = git@github.com:phpbb/
 	insteadOf = phpbb:
 
 [url "git@github.com:kiddivouchers/"]

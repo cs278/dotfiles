@@ -13,6 +13,9 @@ alias l='ls -CF'
 alias dir='ls --format=vertical'
 alias vdir='ls --format=long'
 
+# Human readable sorted, output output of currernt directory
+alias duh='du -ah --max-depth 1 . | sort -h'
+
 # ps
 alias ps='ps aux --forest';
 alias psgrep='ps aux | grep ';
