@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e
+#set -x
+
+VCSH_BASE=${VCSH_BASE:-$GIT_WORK_TREE}
+
+if [ -z "$VCSH_BASE" ];
+then
+	exit
+fi
+
+if [ -x "$VCSH_BASE/.ssh/compile" ];
+then
+	$VCSH_BASE/.ssh/compile
+fi
