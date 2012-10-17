@@ -1,0 +1,79 @@
+path_unshift()
+{
+	# Adds the supplied path to the start of the PATH
+
+	if [ "${1:0:1}" = "/" ] && [ ! -d "${1}" ];
+	then
+		# Absolute path, that does not exist,
+		# keep the path clean by not adding it.
+		return
+	fi
+
+	if [ -z "$PATH" ];
+	then
+		PATH="$1"
+	else
+		PATH="$1:$PATH"
+	fi
+}
+
+path_push()
+{
+	# Adds the supplied path to the end of the PATH
+
+	if [ "${1:0:1}" = "/" ] && [ ! -d "${1}" ];
+	then
+		# Absolute path, that does not exist,
+		# keep the path clean by not adding it.
+		return
+	fi
+
+	if [ -z "$PATH" ];
+	then
+		PATH="$1"
+	else
+		PATH="$PATH:$1"
+	fi
+}
+
+# Cleanout
+PATH=""
+
+# TODO: Check for gaining root before adding sbin
+path_unshift /sbin
+path_unshift /bin
+path_unshift /usr/sbin
+path_unshift /usr/bin
+path_unshift /usr/local/sbin
+path_unshift /usr/local/bin
+
+# Ubuntu/Debian things
+if [ -f /etc/debian_version ];
+then
+	path_unshift /usr/lib/lightdm/lightdm
+	path_push /usr/games
+fi
+
+# RHEL
+if [ -f /etc/redhat-release ];
+then
+	push_unshift /usr/kerberos/bin
+fi
+
+# Rackspace
+if [ -d ~rack ];
+then
+	path_push /opt/dell/srvadmin/bin
+fi
+
+path_unshift "$HOME/bin"
+
+# Bleeding ruby
+if [ -d /var/lib/gems ];
+then
+	for dir in /var/lib/gems/*/bin; do
+		path_push "${dir}"
+	done
+fi
+
+export PATH

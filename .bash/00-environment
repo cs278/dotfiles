@@ -20,20 +20,3 @@ export EDITOR="nano";
 
 # Ignore EOF until 3 key presses.
 export IGNOREEOF="2"
-
-if [ -d "$HOME/bin" ];
-then
-	PATH="${HOME}/bin:${PATH}"
-fi
-
-# Bleeding ruby
-if [ -d /var/lib/gems ];
-then
-	for dir in /var/lib/gems/*/bin; do
-		if [ -d "$dir" ]; then
-			PATH="${PATH}:${dir}"
-		fi
-	done
-fi
-
-export PATH
