@@ -27,8 +27,13 @@ then
 fi
 
 # Bleeding ruby
-if [ -d /var/lib/gems/1.8/bin/ ] ; then
-	PATH="${PATH}:/var/lib/gems/1.8/bin/";
+if [ -d /var/lib/gems ];
+then
+	for dir in /var/lib/gems/*/bin; do
+		if [ -d "$dir" ]; then
+			PATH="${PATH}:${dir}"
+		fi
+	done
 fi
 
 export PATH
