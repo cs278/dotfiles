@@ -76,4 +76,10 @@ then
 	done
 fi
 
+if [ $(id -u) -gt 0 ];
+then
+	# Not root add $PWD/bin as an executable path
+	path_unshift "bin"
+fi
+
 export PATH
