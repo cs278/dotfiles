@@ -96,6 +96,9 @@
 
 [url "git@github.com:cs278/"]
 	insteadOf = cs278:
+	pushInsteadOf = git://github.com/cs278/
+	pushInsteadOf = https://github.com/cs278/
+	pushInsteadOf = http://github.com/cs278/
 
 [url "git://github.com/phpbb/"]
 	insteadOf = git@github.com:phpbb/
