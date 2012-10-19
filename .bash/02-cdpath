@@ -44,6 +44,6 @@ cdpath_unshift "$HOME"
 cdpath_unshift "$HOME/projects"
 
 # Favour current directory.
-cdpath_unshift .
+cdpath_unshift
 
 export CDPATH
