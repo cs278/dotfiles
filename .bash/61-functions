@@ -61,3 +61,12 @@ save()
 		shift
 	done
 }
+
+# Sorted humean readable disk usage.
+stuff()
+{
+	dir=${1:-.}
+	shift
+
+	du -ha --max-depth 1 "$@" "$dir" | sort -h
+}
