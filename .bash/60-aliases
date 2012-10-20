@@ -2,10 +2,11 @@
 
 if [ -n "$COLOUR" ];
 then
-	alias ls='ls -lA --color=auto'
+	alias ls='ls -lAh --color=auto'
 else
-	alias ls='ls -lA'
+	alias ls='ls -lAh'
 fi
+
 alias ll='ls -l'
 alias la='ls -A'
 alias lla='ls -lA'
