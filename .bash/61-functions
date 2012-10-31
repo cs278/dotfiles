@@ -70,3 +70,21 @@ stuff()
 
 	du -ha --max-depth 1 "$@" "$dir" | sort -h
 }
+
+ifconfigme()
+{
+	arg=${1}
+	url="http://ifconfig.me/${arg}"
+
+	if which wget &>/dev/null;
+	then
+		wget --quiet --header="User-Agent: wget masquerading as curl (please support Accept: text/plain rather than user agent sniffing)" --header="Accept: text/plain" "$url" -O-
+	elif which curl &>/dev/null;
+	then
+		curl "$url"
+	else
+		echo "Neither curl or wget could be found" >&2
+
+		return 1
+	fi
+}
