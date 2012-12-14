@@ -2,7 +2,7 @@ extract ()
 {
 	if [ -f $1 ]; then
 		case $1 in
-			*.tar.bz2|*.tar.gz|*.tar|*.tbz2|*.tgz)
+			*.tar.bz2|*.tar.gz|*.tar|*.tbz2|*.tgz|*.tar.xz)
 				tar xf "$1"
 			;;
 			*.bz2)
@@ -16,6 +16,9 @@ extract ()
 			;;
 			*.zip)
 				unzip "$1"
+			;;
+			*.xz)
+				xz "$1"
 			;;
 			*.Z)
 				uncompress "$1"
