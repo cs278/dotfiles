@@ -116,6 +116,7 @@
 [status]
 	relativePaths = True
 	submodulesummary = 2
+
 [push]
 	default = upstream
 
