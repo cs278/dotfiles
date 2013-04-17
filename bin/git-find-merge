@@ -1,0 +1,23 @@
+#!/bin/bash
+
+##
+## Finds where a commit was merged into a supplied branch.
+##
+## Basically it finds the merges between the commit in question and
+## the branch head, and all the merge commits on the branch. It then
+## intersects these and returns the first entry.
+##
+
+set -e
+
+commit=$1
+branch=${2:-HEAD}
+
+merge=$( \
+	comm --check-order -12 \
+		<(git log --format="%ct %H" --ancestry-path --merges "$commit..$branch" | sort) \
+		<(git log --format="%ct %H" --merges --first-parent "$branch" | sort) \
+	| head -n1 | awk '{ print $2 }' \
+)
+
+echo $merge
