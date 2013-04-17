@@ -1,0 +1,39 @@
+#!/bin/sh
+
+## Fast forwards the current branch to its tracking branch,
+## or if a branch name is supplied as the first argument
+## fast forwards this branch to its tracking branch without
+## performing a checkout.
+
+set -e
+
+upstream() {
+	if [ -z "$1" ];
+	then
+		ref=$(resolve HEAD)
+	else
+		ref=$1
+	fi
+
+	git for-each-ref --format="%(upstream:short)" "$ref" | head -n1
+}
+
+resolve() {
+	git symbolic-ref -q "${1:-HEAD}"
+}
+
+rev() {
+	git rev-parse --verify "$1"
+}
+
+if [ -z "$1" ];
+then
+	git merge --ff-only $(upstream)
+else
+	branch=$1
+	ref="refs/heads/$1"
+	upstream=$(upstream "$ref")
+	commit=$(rev "$upstream")
+
+	git update-ref -m "merge $commit: Fast forward" "$ref" "$commit"
+fi

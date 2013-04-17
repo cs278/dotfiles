@@ -32,7 +32,7 @@
 	tracking = "!git for-each-ref --format=\"%(upstream:short)\" \"$(git symbolic-ref -q HEAD)\" | head -n1"
 
 	# Automagical fast-forward from tracked branch.
-	ff = "!u() { git for-each-ref --format=\"%(upstream:short)\" \"$(git symbolic-ref -q HEAD)\" | head -n1; }; git merge --ff-only `u`"
+	ff = fastforward
 
 	# Set tracking branch
 	track = "!sh -c '[ -z $1 ] && exit 1; branch=$(git symbolic-ref -q HEAD) || exit 1; branch=${branch##refs/heads/}; git branch --set-upstream $branch $1/$branch' -"
