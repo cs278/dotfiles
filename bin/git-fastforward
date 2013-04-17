@@ -31,9 +31,11 @@ then
 	git merge --ff-only $(upstream)
 else
 	branch=$1
-	ref="refs/heads/$1"
+	ref="refs/heads/$branch"
 	upstream=$(upstream "$ref")
 	commit=$(rev "$upstream")
 
+	# Perform dark magic
+	# <http://stackoverflow.com/questions/3216360/git-update-a-local-branch-without-checking-it-out>
 	git update-ref -m "merge $commit: Fast forward" "$ref" "$commit"
 fi
