@@ -97,3 +97,9 @@ function notify_when_long_running_commands_finish_install() {
 
     preexec_install
 }
+
+
+if ! [ -z "$BASH_VERSION" -o -z "$PS1" -o -n "$last_command_started_cache" ];
+then
+	notify_when_long_running_commands_finish_install
+fi
