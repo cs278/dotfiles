@@ -67,6 +67,7 @@ function notify_when_long_running_commands_finish_install() {
                     notify=$(command -v notify-send)
                     if [ -x "$notify" ]; then
                         $notify \
+                        -a bash \
                         -i $icon \
                         -u $urgency \
                         "Long command completed" \
