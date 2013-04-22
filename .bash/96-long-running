@@ -13,17 +13,7 @@ if [ -z "$LONG_RUNNING_COMMAND_TIMEOUT" ]; then
     LONG_RUNNING_COMMAND_TIMEOUT=10
 fi
 
-# The pre-exec hook functionality is in a separate branch.
-if [ -z "$LONG_RUNNING_PREEXEC_LOCATION" ]; then
-    LONG_RUNNING_PREEXEC_LOCATION=/usr/share/undistract-me/preexec.bash
-fi
-
-if [ -f "$LONG_RUNNING_PREEXEC_LOCATION" ]; then
-    . $LONG_RUNNING_PREEXEC_LOCATION
-else
-    echo "Could not find preexec.bash"
-fi
-
+## https://github.com/jml/undistract-me/blob/8a4d09e2c2d79a9975825000e743c0ab20c20092/long-running.bash
 
 function notify_when_long_running_commands_finish_install() {
 
