@@ -1,0 +1,20 @@
+#!/bin/sh
+
+##
+## Allows you to edit the supplied file directly on the index without
+## touching the working copy, allowing you to make a quick fix and commit
+## without stashing or other rebase fun.
+##
+
+file=$1
+# TODO: Support rev parameter
+rev=
+tmpfile=$(tempfile)
+
+git show ${rev:-HEAD}:$file > "$tmpfile"
+${EDITOR:-/usr/bin/editor} "$tmpfile"
+object=$(git hash-object -w "$tmpfile")
+
+# TODO: Sort out correctly registering the mode
+git update-index --cacheinfo 100644 $object "$file"
+rm -f "$tmpfile"
