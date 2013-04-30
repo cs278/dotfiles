@@ -80,7 +80,7 @@
 	nuke = reset --hard
 
 	# Reset files which only contain whitespace changes.
-	tidy = "! git diff -b --numstat -z | grep -z $'^0\t0' | awk -vRS=$'\\0' -vORS=$'\\0' '{ print $3 }' | git checkout-index --stdin -z -f"
+	tidy = "! git diff -b --numstat -z | grep -z '^0\t0' | awk -vRS='\\0' -vORS='\\0' '{ print $3 }' | git checkout-index --stdin -z -f"
 
 	# Work in progress command, TODO: make this more useful
 	wip = commit -m wip
