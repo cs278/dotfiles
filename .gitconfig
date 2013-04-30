@@ -79,6 +79,9 @@
 	uncommit = reset --soft HEAD^
 	nuke = reset --hard
 
+	# Reset files which only contain whitespace changes.
+	tidy = "! git diff -b --numstat -z | grep -z $'^0\t0' | awk -vRS=$'\\0' -vORS=$'\\0' '{ print $3 }' | git checkout-index --stdin -z -f"
+
 	stat = count-objects -v
 
 	# Maintenance commands
