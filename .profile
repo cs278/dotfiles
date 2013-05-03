@@ -1,22 +1,18 @@
-# ~/.profile: executed by the command interpreter for login shells.
-# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
-# exists.
-# see /usr/share/doc/bash/examples/startup-files for examples.
-# the files are located in the bash-doc package.
+##
+## Run by the login session.
+##
+## Allows environment variables to be set for the whole session, rather than
+## per terminal as .bashrc creates.
+##
+## Script must be POSIX shell compatible.
+##
 
-# the default umask is set in /etc/profile; for setting the umask
-# for ssh logins, install and configure the libpam-umask package.
-#umask 022
+# Set up my basic environment
+. ~/.bash/00-environment
 
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
-fi
+# Adjust PATH to my liking
+# Cannot use my normal .01-path here as it busts Gnome.
+export PATH="$HOME/bin:$PATH"
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
+# Cleanup locale environment variables
+. ~/.bash/09-lc-cleanup
