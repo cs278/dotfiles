@@ -18,6 +18,21 @@ export EMAIL;
 # I'm a simpleton
 export EDITOR="nano";
 
+if which subl >/dev/null 2>&1;
+then
+	# Use Sublime
+	VISUAL="subl --new-window --wait"
+elif which gedit >/dev/null 2>&1;
+then
+	# Or gedit
+	VISUAL="gedit --standalone --wait"
+fi
+
+if [ -n "$VISUAL" ];
+then
+	export VISUAL
+fi
+
 # Ignore EOF until 3 key presses.
 export IGNOREEOF="2"
 
