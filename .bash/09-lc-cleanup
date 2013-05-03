@@ -1,17 +1,8 @@
-# Safely read in environment variables
-while read -r -d $'\0' line;
+## Removes pointless LC_ variables from the environment.
+## This is POSIX shell compatible.
+for line in `env | grep ^LC_..*=$LANG$`;
 do
 	var=$(echo "$line" | cut -f1 -d=)
-	value=$(echo "$line" | cut -f2- -d=)
 
-	if [ "${var:0:3}" == "LC_" ];
-	then
-		if [ "$value" == "$LANG" ];
-		then
-			# LC_ variable matched the default LANG variable, no need for it
-			# to be set.
-			export -n $var
-			unset $var
-		fi
-	fi
-done < <(env --null)
+	unset $var
+done
