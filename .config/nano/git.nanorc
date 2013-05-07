@@ -33,6 +33,11 @@ color brightblue  "#[[:space:]]renamed:"
 # Recolor hash symbols
 color brightblack "#"
 
+# Issues
+color brightred "[[:space:]][[:graph:]]+/[[:graph:]]+#[[:digit:]]+"
+# Issues in GH owner/repo#1234 format
+color brightred "[[:space:]]#[[:digit:]]+"
+
 # Trailing spaces
 color ,red "[[:space:]]+$"
 
