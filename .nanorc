@@ -8,3 +8,5 @@ set tabsize 4
 unset backup
 
 set smarthome
+
+include ~/.config/nano/git.nanorc
