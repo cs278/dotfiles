@@ -18,7 +18,7 @@ syntax "git commit/tag messages" "COMMIT_EDITMSG|TAG_EDITMSG"
 color brightwhite ".*"
 
 # Subject line
-color brightcyan start="^" end="\n$"
+color brightcyan start="^" end=".$"
 
 # Comments
 color brightblack "^#.*"
