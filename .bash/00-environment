@@ -31,11 +31,26 @@ then
 		# Or gedit
 		VISUAL="gedit --standalone --wait"
 	fi
+
+	if which google-chrome >/dev/null 2>&1;
+	then
+		# I prefer Chrome
+		BROWSER=google-chrome
+	elif which x-www-browser >/dev/null 2>&1;
+	then
+		# Fallback to system default
+		BROWSER=x-www-browser
+	fi
 fi
 
 if [ -n "$VISUAL" ];
 then
 	export VISUAL
+fi
+
+if [ -n "$BROWSER" ];
+then
+	export BROWSER
 fi
 
 # Ignore EOF until 3 key presses.
