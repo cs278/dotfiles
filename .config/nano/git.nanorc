@@ -41,8 +41,8 @@ color brightred "[[:space:]]#[[:digit:]]+"
 # Trailing spaces
 color ,red "[[:space:]]+$"
 
-# Highlight lines longer than 69 characters
-color brightred,black "^.{70,}$"
+# Highlight lines longer than 69 characters, ignore comments
+color brightred,black "^[^#].{69,}$"
 
 # This syntax format is used for interactive rebasing
 syntax "git rebase todo" "git-rebase-todo"
