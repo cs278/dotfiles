@@ -34,9 +34,9 @@ color brightblue  "#[[:space:]]renamed:"
 color brightblack "#"
 
 # Issues
-color brightred "[[:space:]][[:graph:]]+/[[:graph:]]+#[[:digit:]]+"
-# Issues in GH owner/repo#1234 format
 color brightred "[[:space:]]#[[:digit:]]+"
+# Issues in GH owner/repo#1234 format
+color brightred "[[:space:]][[:graph:]]+/[[:graph:]]+#[[:digit:]]+"
 
 # Trailing spaces
 color ,red "[[:space:]]+$"
