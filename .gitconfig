@@ -16,7 +16,7 @@
 	ci = commit
 	co = checkout
 	st = status
-	br = branch -vv
+	br = "!sh -c 'if git has-remote origin; then git branch -vv --no-merge origin/HEAD; else git branch -vv; fi' -"
 
 	# List local branches in ascending commit time order.
 	# Based off of <http://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit>
