@@ -43,6 +43,9 @@
 	# Add all unmerged files
 	unmerged-add = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
 
+	# Test if the repository has a remote registered.
+	has-remote = "!sh -c '[ -z \"$1\" ] && exit 2; git remote | grep --quiet \"$1\"' -"
+
 	# Prune all remotes
 	prune-all = !git remote | xargs -n 1 git remote prune
 
