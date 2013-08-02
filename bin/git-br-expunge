@@ -6,6 +6,12 @@ is_merged() {
 	git branch --merged "$MERGE_BASE" | grep --quiet "$1"
 }
 
+resolve() {
+	( git symbolic-ref -q "${1:-HEAD}" || echo "$1" ) | sed 's,^refs/heads/,,'
+}
+
+MERGE_BASE=$(resolve "${1:-HEAD}")
+
 if ! git show $MERGE_BASE > /dev/null 2>&1;
 then
 	echo "'$MERGE_BASE' is not a valid branch" >&2
