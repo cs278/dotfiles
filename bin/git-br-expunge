@@ -1,0 +1,31 @@
+#!/bin/bash
+
+MERGE_BASE=${1:-master}
+
+is_merged() {
+	git branch --merged "$MERGE_BASE" | grep --quiet "$1"
+}
+
+if ! git show $MERGE_BASE > /dev/null 2>&1;
+then
+	echo "'$MERGE_BASE' is not a valid branch" >&2
+	exit 1
+fi
+
+git for-each-ref --sort=committerdate --format="%(refname:short)" refs/heads | while read branch
+do
+	if is_merged "$branch" && [ "$branch" != "$MERGE_BASE" ];
+	then
+
+		git log -n1 $branch --pretty=format:"Delete %Cred$branch%Creset (%C(green)%cr%C(reset))? (n)"
+
+		# Requires bash
+		read -s -N 1 -p "" -u 1 answer
+
+		if [ "${answer:-n}" == "y" ];
+		then
+			# Final sanity check
+			git branch -d "$branch"
+		fi
+	fi
+done
