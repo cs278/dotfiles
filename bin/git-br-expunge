@@ -12,6 +12,8 @@ then
 	exit 1
 fi
 
+echo "Finding branches merged into $MERGE_BASE"
+
 git for-each-ref --sort=committerdate --format="%(refname:short)" refs/heads | while read branch
 do
 	if is_merged "$branch" && [ "$branch" != "$MERGE_BASE" ];
