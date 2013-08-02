@@ -22,16 +22,6 @@ if [ -n "$DISPLAY" ];
 then
 	# If running inside a graphical session adjust some settings.
 
-	if which subl >/dev/null 2>&1;
-	then
-		# Use Sublime
-		VISUAL="subl --new-window --wait"
-	elif which gedit >/dev/null 2>&1;
-	then
-		# Or gedit
-		VISUAL="gedit --standalone --wait"
-	fi
-
 	if which google-chrome >/dev/null 2>&1;
 	then
 		# I prefer Chrome
