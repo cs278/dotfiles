@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MERGE_BASE=${1:-master}
+set -e
 
 is_merged() {
 	git branch --merged "$MERGE_BASE" | grep --quiet "$1"
@@ -27,7 +27,7 @@ do
 		if [ "${answer:-n}" == "y" ];
 		then
 			# Final sanity check
-			git branch -d "$branch"
+			git branch -d "$branch" || true
 		fi
 	fi
 done
