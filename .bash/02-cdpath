@@ -46,4 +46,6 @@ cdpath_unshift "$HOME/projects"
 # Favour current directory.
 cdpath_unshift
 
-export CDPATH
+# Do *not* export CDPATH, there be dragons.
+# http://bosker.wordpress.com/2012/02/12/bash-scripters-beware-of-the-cdpath/
+export -n CDPATH
