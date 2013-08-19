@@ -48,3 +48,20 @@ export IGNOREEOF="2"
 
 # Set up language environment
 export LANG=${LANG:-en_GB.UTF-8}
+
+# Set up a safe TMPDIR
+export TMPDIR="/tmp/$USER"
+
+if [ ! -d "$TMPDIR" ];
+then
+	mkdir --mode=0700 --parents "$TMPDIR"
+else
+	chmod 0700 "$TMPDIR"
+fi
+
+# A number of programs create a $TMPDIR/$USER directory themselves
+# create a symlink so they use the correct location.
+if [ ! -s "$TMPDIR/$USER" ];
+then
+	ln -s . "$TMPDIR/$USER"
+fi
