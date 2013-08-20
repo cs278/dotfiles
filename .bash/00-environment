@@ -65,3 +65,7 @@ if [ ! -s "$TMPDIR/$USER" ];
 then
 	ln -s . "$TMPDIR/$USER"
 fi
+
+# Default GnuPG keys
+export GPG_SIGN=4EDDF2C7
+export GPG_ENCRPYT=D4AA8EB1
