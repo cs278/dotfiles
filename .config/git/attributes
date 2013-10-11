@@ -3,3 +3,4 @@
 *.jpeg diff=image
 *.gif diff=image
 *.json diff=json
+*.php diff=php
