@@ -1,6 +1,5 @@
 {
 	"config": {
-		"cache-dir": "~/.cache/composer",
 		"bin-dir": "bin",
 		"notify-on-install": false,
 		"github-protocols": ["git"]
