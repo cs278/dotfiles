@@ -1,0 +1,8 @@
+# Settings for stty
+# Restrict to interactive terminals.
+if [ -t 0 ] || [ -p /dev/stdin ];
+then
+	# Disable terminal flow control
+	# <http://blog.bigsmoke.us/2013/08/05/readline-shortcuts-ctrl-s-and-xoff>
+	stty -ixon
+fi
