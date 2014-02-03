@@ -53,6 +53,10 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	pg = "!git lg \"$(git tracking)\".."
 
+	# <https://ochronus.com/git-tips-from-the-trenches/>
+	ls  = log --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=short
+	lsv = log --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=short --stat
+
 	# git subdo pull
 	subdo = submodule foreach git
 
