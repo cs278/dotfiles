@@ -1,5 +1,4 @@
-# Settings for stty
-# Restrict to interactive terminals.
+# Settings for interactive terminals.
 if [ -t 0 ] || [ -p /dev/stdin ];
 then
 	# Disable terminal flow control
