@@ -66,6 +66,9 @@ then
 	ln -s . "$TMPDIR/$USER"
 fi
 
+# Pager settings
+export LESS="--tabs=4 --RAW-CONTROL-CHARS"
+
 # Default GnuPG keys
 export GPG_SIGN=4EDDF2C7
 export GPG_ENCRPYT=D4AA8EB1
