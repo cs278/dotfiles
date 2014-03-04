@@ -4,4 +4,8 @@ then
 	# Disable terminal flow control
 	# <http://blog.bigsmoke.us/2013/08/05/readline-shortcuts-ctrl-s-and-xoff>
 	stty -ixon
+
+	# Set tab stops
+	# Note: tabs command outputs blank line which needs removing.
+	tabs -4 && tput cuu1
 fi
