@@ -7,7 +7,7 @@
 	attributesfile = ~/.config/git/attributes
 
 	# Expand tabs to 4 characters, but expand the first to 6 to skip past diff context.
-	pager = less -x 6,10 -F
+	pager = less -x 6,10 -F -X
 
 [color]
 	ui = True
