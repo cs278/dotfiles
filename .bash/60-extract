@@ -27,7 +27,7 @@ extract ()
 				7z x "$1"
 			;;
 			*.iso)
-				bsdtar -xvf "$1"
+				bsdtar -xf "$1"
 			;;
 			*)
 				echo "'$1' cannot be extracted via extract()" >&2
