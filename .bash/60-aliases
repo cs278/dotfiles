@@ -29,6 +29,7 @@ alias diff='diff --unified=3'
 
 # date/time
 alias now='date +%s'
+alias iso8601='date --utc +%FT%TZ'
 
 # gnome
 if which gnome-open > /dev/null;
