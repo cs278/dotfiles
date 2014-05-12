@@ -1,6 +1,5 @@
 {
 	"config": {
-		"bin-dir": "bin",
 		"notify-on-install": false,
 		"github-protocols": ["git"]
 	}
