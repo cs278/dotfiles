@@ -75,6 +75,10 @@ then
 	export MAKEFLAGS="--jobs=$(( `cpu-cores` + 1 ))"
 fi
 
+# Composer settings
+export COMPOSER_HOME=${XDG_CONFIG_HOME:-$HOME/.config}/composer
+export COMPOSER_CACHE_DIR=${XDG_CACHE_HOME:-$HOME/.cache}/composer
+
 # Default GnuPG keys
 export GPG_SIGN=4EDDF2C7
 export GPG_ENCRPYT=D4AA8EB1
