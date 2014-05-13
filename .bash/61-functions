@@ -29,15 +29,15 @@ fawk()
 
 save()
 {
-	while [[ -n $1 ]];
+	while [[ -n "$1" ]];
 	do
-		src=$1
+		src="$1"
 		dt=`date +%Y%m%d%H%M%S`
 
 		path=`dirname "$src"`
 		basename=`basename "$src"`
 		ext=$(echo "$basename" | awk -F. '{print $NF}')
-		filename=`basename "$basename" .$ext`
+		filename=`basename "$basename" ".$ext"`
 
 		if [[ "$basename" == "$ext" ]] || [[ "$basename" == ".$ext" ]];
 		then
