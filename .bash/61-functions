@@ -29,10 +29,11 @@ fawk()
 
 save()
 {
+	dt=`date +%Y%m%d%H%M%S`
+
 	while [[ -n "$1" ]];
 	do
 		src="$1"
-		dt=`date +%Y%m%d%H%M%S`
 
 		path=`dirname "$src"`
 		basename=`basename "$src"`
