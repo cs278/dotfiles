@@ -111,24 +111,29 @@
 	# https://speakerdeck.com/u/holman/p/git-and-github-secrets?slide=141
 	credit = !"_() { if [ -n \"$1\" ] && [ -n \"$2\" ]; then git commit --amend -C ${3:-HEAD} --author \"$1 <$2>\"; elif [ \"$1\" = \"reset\" ]; then git commit --amend --reset-author -C HEAD; else echo \"Usage: name email\"; return 1; fi; }; _"
 
-[url "git://github.com/"]
+[url "git@github.com:"]
 	insteadOf = gh:
+	insteadOf = git://github.com/
+	insteadOf = http://github.com/
+	insteadOf = https://github.com/
 
 [url "git@github.com:cs278/"]
 	insteadOf = cs278:
-	pushInsteadOf = git://github.com/cs278/
-	pushInsteadOf = https://github.com/cs278/
-	pushInsteadOf = http://github.com/cs278/
+	insteadOf = git://github.com/cs278/
+	insteadOf = http://github.com/cs278/
+	insteadOf = https://github.com/cs278/
 
-[url "git://github.com/phpbb/"]
-	insteadOf = git@github.com:phpbb/
+[url "git@github.com:phpbb/"]
 	insteadOf = phpbb:
+	insteadOf = git://github.com/phpbb/
+	insteadOf = http://github.com/phpbb/
+	insteadOf = https://github.com/phpbb/
 
 [url "git@github.com:kiddivouchers/"]
 	insteadOf = wp:
-	insteadOf = https://github.com/kiddivouchers/
-	insteadOf = http://github.com/kiddivouchers/
 	insteadOf = git://github.com/kiddivouchers/
+	insteadOf = http://github.com/kiddivouchers/
+	insteadOf = https://github.com/kiddivouchers/
 
 [url "git@github.com:kohana/"]
 	insteadOf = kohana:
