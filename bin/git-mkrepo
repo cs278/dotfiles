@@ -1,0 +1,23 @@
+#!/bin/sh
+
+##
+## Creates a new Git repository with an initial blank commit.
+##
+## This allows you to rebase properly, as the first commit of
+## a repo cannot be rebased.
+##
+
+set -e
+set -u
+
+dir="${1:-}"
+
+if [ ! -z "$dir" ];
+then
+	git init "$dir"
+	cd "$dir"
+else
+	git init
+fi
+
+git commit --allow-empty --message "Initial commit"
