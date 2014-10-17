@@ -89,6 +89,12 @@
 	uncommit = reset --soft HEAD^
 	nuke = reset --hard
 
+	# Search for content and display per file
+	grep = grep --break --heading --line-number
+
+	# Search using PCRE
+	preg = grep --break --heading --line-number --perl-regexp
+
 	# Reset files which only contain whitespace changes.
 	tidy = "! git diff -b --numstat -z | grep -z '^0\t0' | awk -vRS='\\0' -vORS='\\0' '{ print $3 }' | git checkout-index --stdin -z -f"
 
