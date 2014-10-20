@@ -1,6 +1,8 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+. ~/.profile.d/functions
+
 PROMPT_COMMAND=""
 
 # make less more friendly for non-text input files, see lesspipe(1)
