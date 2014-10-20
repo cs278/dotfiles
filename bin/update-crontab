@@ -15,9 +15,9 @@ fi
 
 path=
 
-if [ -z "$path" ] && [ -f "$HOME/.bash/01-path" ];
+if [ -z "$path" ] && [ -f "$HOME/.profile" ];
 then
-	path=$(bash -c '. $HOME/.bash/01-path; echo $PATH' || true)
+	path=$(sh -c '. $HOME/.profile; echo $PATH' || true)
 fi
 
 if [ -z "$path" ] && [ -f "/etc/environment" ];
