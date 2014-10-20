@@ -22,7 +22,7 @@ fi
 
 if [ -z "$path" ] && [ -f "/etc/environment" ];
 then
-	path=$(bash -c '. /etc/envrionment; echo $PATH' || true)
+	path=$(bash -c '. /etc/environment; echo $PATH' || true)
 fi
 
 (
