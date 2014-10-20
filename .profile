@@ -22,10 +22,3 @@ for file in ~/.profile.d/??-*; do
 		. $file
 	fi
 done
-
-# Include per-shell login file if required.
-case "$SHELL" in
-	bash)
-		[ -f ~/.bash_profile ] && . ~/.bash_profile
-	;;
-esac
