@@ -1,0 +1,51 @@
+# Cleanout
+PATH=""
+
+# TODO: Check for gaining root before adding sbin
+_path_unshift /sbin
+_path_unshift /bin
+_path_unshift /usr/sbin
+_path_unshift /usr/bin
+_path_unshift /usr/local/sbin
+_path_unshift /usr/local/bin
+
+# Ubuntu/Debian things
+if [ -f /etc/debian_version ];
+then
+	_path_unshift /usr/lib/lightdm/lightdm
+	_path_push /usr/games
+fi
+
+# RHEL
+if [ -f /etc/redhat-release ];
+then
+	_path_unshift /usr/kerberos/bin
+fi
+
+# Rackspace
+if [ -d ~rack ];
+then
+	_path_push /opt/dell/srvadmin/bin
+fi
+
+_path_unshift "$HOME/bin"
+
+# Bleeding ruby
+if [ -d /var/lib/gems ];
+then
+	for dir in /var/lib/gems/*/bin; do
+		_path_push "${dir}"
+	done
+fi
+
+if [ $(id -u) -gt 0 ];
+then
+	# Not root add $PWD/bin as an executable path
+	_path_unshift "bin"
+fi
+
+if [ -z "$PATH" ];
+then
+	echo "Failed to configure a valid PATH, falling back to default." >&2
+	PATH=$_path_DEFAULT
+fi

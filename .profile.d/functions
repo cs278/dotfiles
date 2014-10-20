@@ -1,0 +1,43 @@
+##
+## Common functions used for setting up my environment.
+##
+## These functions *must* be POSIX compliant.
+##
+
+# Adds the supplied path to the start of the PATH
+_path_unshift()
+{
+	case "$1" in
+		/*)
+			# Absolute path, that does not exist,
+			# keep the path clean by not adding it.
+			[ ! -d "${1}" ] && return
+		;;
+	esac
+
+	if [ -z "$PATH" ];
+	then
+		PATH="$1"
+	else
+		PATH="$1:$PATH"
+	fi
+}
+
+# Adds the supplied path to the end of the PATH
+_path_push()
+{
+	case "$1" in
+		/*)
+			# Absolute path, that does not exist,
+			# keep the path clean by not adding it.
+			[ ! -d "${1}" ] && return
+		;;
+	esac
+
+	if [ -z "$PATH" ];
+	then
+		PATH="$1"
+	else
+		PATH="$PATH:$1"
+	fi
+}

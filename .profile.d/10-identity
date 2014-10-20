@@ -1,0 +1,14 @@
+case $(hostname --domain) in
+	*.kv-is.local|kv-is.local)
+		EMAIL="chris.smith@widerplan.com"
+	;;
+	*.cs278.org|cs278.org)
+		EMAIL="chris@cs278.org"
+	;;
+	*)
+		echo "Unknown machine." >&2
+	;;
+esac
+
+export NAME="Chris Smith";
+export EMAIL;

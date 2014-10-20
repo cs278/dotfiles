@@ -1,0 +1,2 @@
+# Set up language environment
+export LANG=${LANG:-en_GB.UTF-8}

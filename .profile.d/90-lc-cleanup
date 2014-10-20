@@ -1,0 +1,20 @@
+# Cleanup locale environment variables
+# Removes pointless LC_ variables from the environment.
+
+# Normalise UTF-8 encoding in locales.
+for line in `env | grep ^LC_..*=..*\.utf8$`;
+do
+	var=$(echo "$line" | cut -f1 -d=)
+	value=$(echo "$line" | cut -f2- -d= | sed 's/\.utf8$/\.UTF-8/')
+
+	eval `echo "$var=$value"`
+
+	export $var
+done
+
+for line in `env | grep ^LC_..*=$LANG$`;
+do
+	var=$(echo "$line" | cut -f1 -d=)
+
+	unset $var
+done

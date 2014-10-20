@@ -1,0 +1,3 @@
+# Provide a sane default PATH for initial setup
+PATH_DEFAULT="${PATH:-/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin}"
+export PATH="$PATH_DEFAULT"
