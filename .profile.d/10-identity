@@ -10,5 +10,20 @@ case $(hostname --domain) in
 	;;
 esac
 
+if [ -z "$USER" ] && [ ! -z "$LOGNAME" ];
+then
+	USER="$LOGNAME"
+else
+	if [ -z "$USER" ];
+	then
+		# Both USER and LOGNAME are empty.
+		USER="$(id -nu)"
+	fi
+
+	LOGNAME="$USER"
+fi
+
 export NAME="Chris Smith";
 export EMAIL;
+export USER;
+export LOGNAME;
