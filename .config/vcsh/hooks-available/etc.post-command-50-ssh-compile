@@ -3,7 +3,7 @@
 set -e
 #set -x
 
-VCSH_BASE=${VCSH_BASE:-$GIT_WORK_TREE}
+VCSH_BASE="$(git rev-parse --show-toplevel)"
 
 if [ -z "$VCSH_BASE" ];
 then
