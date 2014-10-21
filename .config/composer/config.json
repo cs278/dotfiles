@@ -1,6 +1,6 @@
 {
 	"config": {
 		"notify-on-install": false,
-		"github-protocols": ["git"]
+		"github-protocols": ["ssh"]
 	}
 }
