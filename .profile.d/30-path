@@ -38,12 +38,6 @@ then
 	done
 fi
 
-if [ $(id -u) -gt 0 ];
-then
-	# Not root add $PWD/bin as an executable path
-	_path_unshift "bin"
-fi
-
 if [ -z "$PATH" ];
 then
 	echo "Failed to configure a valid PATH, falling back to default." >&2
