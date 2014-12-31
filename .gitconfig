@@ -27,7 +27,7 @@
 
 	# Shows what changes have been staged
 	staged = diff --cached
-	pushing = "!git diff `git tracking`..HEAD"
+	pushing = diff @{u}..HEAD
 
 	wdiff = diff --word-diff
 
