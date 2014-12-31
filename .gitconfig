@@ -32,7 +32,7 @@
 	wdiff = diff --word-diff
 
 	# Finds the branch the local branch tracks.
-	tracking = "!git for-each-ref --format=\"%(upstream:short)\" \"$(git symbolic-ref -q HEAD)\" | head -n1"
+	tracking = rev-parse --abbrev-ref --symbolic-full-name @{u}
 
 	# Automagical fast-forward from tracked branch.
 	ff = fastforward
