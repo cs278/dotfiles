@@ -168,3 +168,6 @@
 [diff "sublimejson"]
 	# Render JSON with support for comments and fallback to cat
 	textconv = "sublime-json $1 2>/dev/null || cat $1"
+
+[diff "pkpem"]
+	textconv = "openssl x509 -text -noout -in"
