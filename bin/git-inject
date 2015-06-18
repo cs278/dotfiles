@@ -34,6 +34,6 @@ git commit -m "fixup! $hash" "$@"
 
 [ -n "$(git diff-files)" ] && git stash && dirty=1
 
-git rebase $hash^^ -i --autosquash
+git rebase $hash^^ -i --autosquash --preserve-merges
 
 [ -n "$dirty" ] && git stash pop;
