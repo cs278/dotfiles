@@ -1,0 +1,39 @@
+#!/bin/sh
+
+# Stolen from: <https://news.ycombinator.com/item?id=9705690>
+
+set -e
+set -u
+
+usage() {
+	echo "Usage: git inject <commit-ref> <patch-ref>"
+	echo
+	echo "Examples:"
+	echo
+	echo "	git inject HEAD^^ -a # Inject all working directory modifications"
+	echo "	git inject ffdead0 -p # Interactively select patches to inject"
+	echo "	git inject HEAD~4 file1 # Inject modifications to file1"
+	echo
+}
+
+if [ $# -lt 2 ]; then
+	usage >&2
+	exit 1
+fi
+
+ref=
+hash=
+dirty=
+
+ref=$1
+hash=$(git show "$ref" --pretty=format:"%H" -q)
+
+shift
+
+git commit -m "fixup! $hash" "$@"
+
+[ -n "$(git diff-files)" ] && git stash && dirty=1
+
+git rebase $hash^^ -i --autosquash
+
+[ -n "$dirty" ] && git stash pop;
