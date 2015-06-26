@@ -27,6 +27,7 @@
 !/bin/git-edit-index
 !/bin/git-fastforward
 !/bin/git-find-merge
+!/bin/git-inject
 !/bin/git-mkrepo
 !/bin/man
 !/bin/update-crontab
@@ -68,8 +69,6 @@
 !/.gnupg/trustdb.gpg
 !/gnupg/trustdb.gpg
 !/.inputrc
-!/.keys
-!/.keys/b0e6439a-eb0d-4f8c-bfb6-5cf22ce64696.key
 !/.nanorc
 !/.pam_environment
 !/.profile
