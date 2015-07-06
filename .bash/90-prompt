@@ -97,6 +97,11 @@ function bash_ps1
 	PS1=
 	PS1+='${debian_chroot:+($debian_chroot)}'
 
+	if [ ! -z "$VCSH_REPO_NAME" ];
+	then
+		PS1_TAG="vcsh:$VCSH_REPO_NAME"
+	fi
+
 	if [ -z "$PS1_TAG" ];
 	then
 		if [ $EUID -eq 0 ];
