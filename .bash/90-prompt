@@ -97,16 +97,21 @@ function bash_ps1
 	PS1=
 	PS1+='${debian_chroot:+($debian_chroot)}'
 
-	if [ $EUID -eq 0 ];
+	if [ -z "$PS1_TAG" ];
 	then
-		PS1+="\[${bakred}\]\[${bldwht}\]"
-	fi
+		if [ $EUID -eq 0 ];
+		then
+			PS1+="\[${bakred}\]\[${bldwht}\]"
+		fi
 
-	PS1+='\u@\h'
+		PS1+='\u@\h'
 
-	if [ $EUID -eq 0 ];
-	then
-		PS1+="\[$txtrst\]"
+		if [ $EUID -eq 0 ];
+		then
+			PS1+="\[$txtrst\]"
+		fi
+	else
+		PS1+="\[$txtcyn\][$PS1_TAG]\[$txtrst\]"
 	fi
 
 	PS1+=':'
