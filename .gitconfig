@@ -15,6 +15,11 @@
 [merge]
 	log = True
 
+[rebase]
+	stat = True
+	autosquash = True
+	autostash = True
+
 [alias]
 	ci = commit
 	co = checkout
