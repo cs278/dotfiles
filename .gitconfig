@@ -104,7 +104,7 @@
 	tidy = "! git diff -b --numstat -z | grep -z '^0\t0' | awk -vRS='\\0' -vORS='\\0' '{ print $3 }' | git checkout-index --stdin -z -f"
 
 	# Work in progress command, TODO: make this more useful
-	wip = commit -m wip
+	wip = "! git commit -m \"[WIP] $(curl -s http://whatthecommit.com/index.txt)\""
 
 	stat = count-objects -v
 
