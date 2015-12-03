@@ -24,3 +24,6 @@ Desktop.ini
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
+
+# Gush
+.gush.yml
