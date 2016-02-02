@@ -67,6 +67,3 @@ alias ban='sudo iptables -I INPUT -j DROP -s'
 alias unban='sudo iptables -D INPUT -j DROP -s'
 
 alias urldecode='/usr/bin/env php -r "echo urldecode(stream_get_contents(STDIN)), chr(13);"'
-
-alias dos2unix='sed -i 's/$//''
-alias trim='sed -i '' 's/[[:space:]]*$//g''
