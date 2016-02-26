@@ -1,0 +1,26 @@
+#!/bin/sh -eu
+
+# Clone the current repository into a temporary directory
+
+currentRef=$(git describe --exact-match HEAD 2>/dev/null || git rev-parse HEAD)
+
+cloneUrl=$(git config remote.origin.url)
+cloneRef=${1:-$currentRef}
+
+dir=$(mktemp --directory)
+
+git clone --depth=1 --branch "$cloneRef" "$cloneUrl" "$dir"
+
+cd "$dir"
+
+PS1_TAG="sandbox:$cloneRef" $SHELL
+
+if ! rmdir "$dir" >/dev/null 2>&1;
+then
+	read -r -p "Delete non-empty sandbox directory \`$dir\`? " reply
+
+	if [ "$reply" = "Y" ] || [ "$reply" = "y" ];
+	then
+		rm --one-file-system -rf "$dir"
+	fi
+fi
