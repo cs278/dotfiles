@@ -9,7 +9,7 @@ cloneRef=${1:-$currentRef}
 
 dir=$(mktemp --directory)
 
-git clone --depth=1 --branch "$cloneRef" "$cloneUrl" "$dir"
+git clone --reference="$(git rev-parse --git-dir)" --depth=1 --branch "$cloneRef" "$cloneUrl" "$dir"
 
 cd "$dir"
 
