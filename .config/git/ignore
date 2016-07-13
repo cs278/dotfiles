@@ -27,3 +27,6 @@ $RECYCLE.BIN/
 
 # Gush
 .gush.yml
+
+# Atom
+.atomignore
