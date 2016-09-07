@@ -122,6 +122,12 @@
 	# https://speakerdeck.com/u/holman/p/git-and-github-secrets?slide=141
 	credit = !"_() { if [ -n \"$1\" ] && [ -n \"$2\" ]; then git commit --amend -C ${3:-HEAD} --author \"$1 <$2>\"; elif [ \"$1\" = \"reset\" ]; then git commit --amend --reset-author -C HEAD; else echo \"Usage: name email\"; return 1; fi; }; _"
 
+	# Chuckle Git
+	# https://en.wikipedia.org/wiki/Chuckle_Brothers
+	to-me = pull
+	to-you = push
+	oh-dear-oh-dear = reset --hard
+
 [url "git@github.com:"]
 	insteadOf = gh:
 	insteadOf = git://github.com/
