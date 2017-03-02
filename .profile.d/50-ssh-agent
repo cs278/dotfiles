@@ -1,0 +1,15 @@
+# Keep keys in the agent for 4 hours.
+LIFETIME=14400
+SOCKET="${XDG_RUNTIME_DIR:-/var/run/user/$(id -u)}/ssh-agent.sock"
+
+if ! [ -z "$SSH_AUTH_SOCK" ]; then
+	return;
+fi
+
+if [ -S "$SOCKET" ]; then
+	export SSH_AUTH_SOCK="$SOCKET"
+
+	return;
+fi
+
+eval $(ssh-agent -s -t $LIFETIME -a "$SOCKET")
