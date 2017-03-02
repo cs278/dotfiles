@@ -29,6 +29,7 @@
 !/bin/git-find-merge
 !/bin/git-inject
 !/bin/git-mkrepo
+!/bin/git-sandbox
 !/bin/man
 !/bin/update-crontab
 !/.caprc
@@ -79,6 +80,7 @@
 !/.profile.d/20-tmpdir
 !/.profile.d/30-path
 !/.profile.d/50-programs
+!/.profile.d/50-ssh-agent
 !/.profile.d/90-lc-cleanup
 !/.profile.d/functions
 !/README.md
@@ -112,6 +114,8 @@
 !/.ssh/hosts.d/lotuselancentral.com
 !/.ssh/hosts.d/lotuselancentral.com/config
 !/.ssh/hosts.d/lotuselancentral.com/known_hosts
+!/.ssh/hosts.d/platform.sh
+!/.ssh/hosts.d/platform.sh/known_hosts
 !/.ssh/hosts.d/router.flat.cs278.org
 !/.ssh/hosts.d/router.flat.cs278.org/config
 !/.ssh/hosts.d/sandman.cs278.org
@@ -123,6 +127,8 @@
 !/.ssh/hosts.d/web2.widerplan.com
 !/.ssh/hosts.d/web2.widerplan.com/config
 !/.ssh/hosts.d/web2.widerplan.com/known_hosts
+!/.ssh/nmru-deploy
+!/.ssh/nmru-deploy.pub
 !/.ssh/sockets
 !/.ssh/sockets/.gitignore
 !/.ssh/sockets/README
