@@ -1,17 +1,19 @@
 # Configure grep
 
-GREP_OPTIONS=""
+grep() {
+	GREP_OPTIONS=""
 
-# Exclude VCS directories
-GREP_OPTIONS+="--exclude-dir=.svn "
-GREP_OPTIONS+="--exclude-dir=.cvs "
-GREP_OPTIONS+="--exclude-dir=.git "
-GREP_OPTIONS+="--exclude-dir=.hg "
-GREP_OPTIONS+="--exclude-dir=.bzr "
+	# Exclude VCS directories
+	GREP_OPTIONS+="--exclude-dir=.svn "
+	GREP_OPTIONS+="--exclude-dir=.cvs "
+	GREP_OPTIONS+="--exclude-dir=.git "
+	GREP_OPTIONS+="--exclude-dir=.hg "
+	GREP_OPTIONS+="--exclude-dir=.bzr "
 
-if [ -n $COLOUR ]
-then
-	GREP_OPTIONS+="--color=auto "
-fi
+	if [ -n $COLOUR ]
+	then
+		GREP_OPTIONS+="--color=auto "
+	fi
 
-export GREP_OPTIONS
+	command grep $GREP_OPTIONS "$@"
+}
