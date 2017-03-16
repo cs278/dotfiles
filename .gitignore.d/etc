@@ -31,6 +31,7 @@
 !/bin/man
 !/bin/update-crontab
 !/.caprc
+!/.config/crontab/jobs/10-ssh-config
 !/.config/crontab/jobs/10-tmpreaper
 !/.config/git/attributes
 !/.config/git/ignore
