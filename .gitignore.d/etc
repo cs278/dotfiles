@@ -73,6 +73,7 @@
 !/.secure/.gitignore
 !/.signature
 !/.ssh/chris@kinslayer.flat.cs278.org.pub
+!/.ssh/chris.smith@widerplan.com.pub
 !/.ssh/chris.smith@wp-105-lu.kv-is.local.pub
 !/.ssh/chris@warrior.flat.cs278.org.pub
 !/.ssh/compile
