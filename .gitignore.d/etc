@@ -82,8 +82,11 @@
 !/.ssh/hosts.d/eva.cs278.org/config
 !/.ssh/hosts.d/router.flat.cs278.org/config
 !/.ssh/hosts.d/sandman.cs278.org/config
+!/.ssh/hosts.d/db1.widerplan.net/known_hosts
 !/.ssh/hosts.d/eva.cs278.org/config
 !/.ssh/hosts.d/eva.cs278.org/known_hosts
+!/.ssh/hosts.d/git.ent.platform.sh/config
+!/.ssh/hosts.d/git.eu.platform.sh/config
 !/.ssh/hosts.d/github.com/config
 !/.ssh/hosts.d/github.com/known_hosts
 !/.ssh/hosts.d/*.kv-is.local/config
@@ -93,10 +96,13 @@
 !/.ssh/hosts.d/router.flat.cs278.org/config
 !/.ssh/hosts.d/sandman.cs278.org/config
 !/.ssh/hosts.d/sandman.cs278.org/known_hosts
+!/.ssh/hosts.d/ssh.eu.platform.sh/config
 !/.ssh/hosts.d/web1.widerplan.com/config
 !/.ssh/hosts.d/web1.widerplan.com/known_hosts
 !/.ssh/hosts.d/web2.widerplan.com/config
 !/.ssh/hosts.d/web2.widerplan.com/known_hosts
+!/.ssh/hosts.d/*.widerplan.ent.platform.sh/config
+!/.ssh/hosts.d/*.widerplan.net/config
 !/.ssh/nmru-deploy
 !/.ssh/nmru-deploy.pub
 !/.ssh/sockets/.gitignore
