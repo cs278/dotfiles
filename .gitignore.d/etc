@@ -101,6 +101,7 @@
 !/.ssh/hosts.d/web1.widerplan.com/known_hosts
 !/.ssh/hosts.d/web2.widerplan.com/config
 !/.ssh/hosts.d/web2.widerplan.com/known_hosts
+!/.ssh/hosts.d/*.widerplan2.ent.platform.sh/config
 !/.ssh/hosts.d/*.widerplan.ent.platform.sh/config
 !/.ssh/hosts.d/*.widerplan.net/config
 !/.ssh/nmru-deploy
