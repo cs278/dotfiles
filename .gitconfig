@@ -28,7 +28,7 @@
 
 	# List local branches in ascending commit time order.
 	# Based off of <http://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit>
-	brl = "!git for-each-ref --sort=committerdate --format=\"%(refname:short)\" refs/heads | while read branch; do git log -n1 $branch --pretty=format:\"%Cred%h%Creset - %C(yellow)($branch)%C(reset) %s %C(green)%cr%C(reset)\"; done"
+	brl = "!git for-each-ref --sort=committerdate --format=\"%(refname:short)\" refs/heads | while read branch; do git log -n1 --pretty=format:\"%Cred%h%Creset - %C(yellow)($branch)%C(reset) %s %C(green)%cr%C(reset)\" $branch --; done"
 
 	# Shows what changes have been staged
 	staged = diff --cached
