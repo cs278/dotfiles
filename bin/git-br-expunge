@@ -25,7 +25,7 @@ do
 	if is_merged "$branch" && [ "$branch" != "$MERGE_BASE" ];
 	then
 
-		git log -n1 $branch --pretty=format:"Delete %Cred$branch%Creset (%C(green)%cr%C(reset))? (n)"
+		git log -n1 --pretty=format:"Delete %Cred$branch%Creset (%C(green)%cr%C(reset))? (n)" "$branch" --
 
 		# Requires bash
 		read -s -N 1 -p "" -u 1 answer
