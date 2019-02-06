@@ -30,3 +30,6 @@ $RECYCLE.BIN/
 
 # Atom
 .atomignore
+
+# PhpStorm (shudder)
+.idea
