@@ -12,7 +12,7 @@
 # https://gist.github.com/koraktor/525257
 
 # This syntax format is used for editing commit and tag messages
-syntax "git commit/tag messages" "COMMIT_EDITMSG|TAG_EDITMSG"
+syntax "git-commit" "COMMIT_EDITMSG|TAG_EDITMSG"
 
 # Commit message
 color brightwhite ".*"
@@ -45,7 +45,7 @@ color ,red "[[:space:]]+$"
 color brightred,black "^[^#].{69,}$"
 
 # This syntax format is used for interactive rebasing
-syntax "git rebase todo" "git-rebase-todo"
+syntax "git-rebase-todo" "git-rebase-todo"
 
 # Default
 color white ".*"
