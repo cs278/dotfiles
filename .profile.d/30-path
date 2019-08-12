@@ -38,6 +38,12 @@ then
 	done
 fi
 
+# Oh Snap!
+if [ -d /snap/bin ];
+then
+	_path_push /snap/bin
+fi
+
 if [ -z "$PATH" ];
 then
 	echo "Failed to configure a valid PATH, falling back to default." >&2
