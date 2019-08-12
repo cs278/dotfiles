@@ -28,8 +28,6 @@ then
 	_path_push /opt/dell/srvadmin/bin
 fi
 
-_path_unshift "$HOME/bin"
-
 # Bleeding ruby
 if [ -d /var/lib/gems ];
 then
@@ -41,8 +39,10 @@ fi
 # Oh Snap!
 if [ -d /snap/bin ];
 then
-	_path_push /snap/bin
+	_path_unshift /snap/bin
 fi
+
+_path_unshift "$HOME/bin"
 
 if [ -z "$PATH" ];
 then
