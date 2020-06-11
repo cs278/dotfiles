@@ -10,6 +10,7 @@
 !/.bash/50-dpkg
 !/.bash/50-git
 !/.bash/50-grep
+!/.bash/51-gh
 !/.bash/60-aliases
 !/.bash/60-extract
 !/.bash/61-functions
