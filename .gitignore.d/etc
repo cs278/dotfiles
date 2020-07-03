@@ -88,9 +88,13 @@
 !/.ssh/hosts.d/eva.cs278.org/known_hosts
 !/.ssh/hosts.d/git.ent.platform.sh/config
 !/.ssh/hosts.d/git.eu-2.platform.sh/config
+!/.ssh/hosts.d/git.eu-4.platform.sh/config
+!/.ssh/hosts.d/git.eu-4.platform.sh/known_hosts
 !/.ssh/hosts.d/git.eu.platform.sh/config
 !/.ssh/hosts.d/github.com/config
 !/.ssh/hosts.d/github.com/known_hosts
+!/.ssh/hosts.d/git.uk-1.platform.sh/config
+!/.ssh/hosts.d/git.uk-1.platform.sh/known_hosts
 !/.ssh/hosts.d/*.kv-is.local/config
 !/.ssh/hosts.d/lotuselancentral.com/config
 !/.ssh/hosts.d/lotuselancentral.com/known_hosts
@@ -99,7 +103,9 @@
 !/.ssh/hosts.d/sandman.cs278.org/config
 !/.ssh/hosts.d/sandman.cs278.org/known_hosts
 !/.ssh/hosts.d/ssh.eu-2.platform.sh/config
+!/.ssh/hosts.d/ssh.eu-4.platform.sh
 !/.ssh/hosts.d/ssh.eu.platform.sh/config
+!/.ssh/hosts.d/ssh.uk-1.platform.sh
 !/.ssh/hosts.d/web1.widerplan.com/config
 !/.ssh/hosts.d/web1.widerplan.com/known_hosts
 !/.ssh/hosts.d/web2.widerplan.com/config
