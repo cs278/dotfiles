@@ -28,6 +28,7 @@
 !/bin/git-find-merge
 !/bin/git-inject
 !/bin/git-mkrepo
+!/bin/git-pager
 !/bin/git-sandbox
 !/bin/man
 !/bin/update-crontab

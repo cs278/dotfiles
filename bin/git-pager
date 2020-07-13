@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -eu
+
+if command -v delta >/dev/null; then
+    exec delta "$@"
+fi
+
+# Expand tabs to 4 characters, but expand the first to 6 to skip past diff context.
+exec less -x 6,10 -F -X "$@"
