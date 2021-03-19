@@ -1,4 +1,4 @@
-PROMPT_COMMAND='res=$?; if [ $__preexec_exit_status -gt 0 ] && [ $__preexec_exit_status -lt 128 ];then ERROR_FLAG=1;else ERROR_FLAG=;fi;'$PROMPT_COMMAND
+PROMPT_COMMAND='res=$?; if [ $__preexec_exit_status -gt 0 ] && ([ $__preexec_exit_status -lt 128 ] || [ $__preexec_exit_status -gt 159 ]);then ERROR_FLAG=1;else ERROR_FLAG=;fi;'$PROMPT_COMMAND
 
 function parse_git_suffix {
     suffix=$(git rev-parse --show-prefix 2> /dev/null) || return
