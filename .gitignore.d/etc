@@ -68,6 +68,7 @@
 !/.profile.d/30-path
 !/.profile.d/50-programs
 !/.profile.d/50-ssh-agent
+!/.profile.d/70-flyio
 !/.profile.d/90-lc-cleanup
 !/.profile.d/functions
 !/README.md

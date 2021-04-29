@@ -1,0 +1,8 @@
+FLYCTL_INSTALL="${HOME}/.fly"
+
+if [ -d "$FLYCTL_INSTALL" ]; then
+	export FLYCTL_INSTALL
+
+	_path_unshift "${FLYCTL_INSTALL}/bin"
+fi
+
