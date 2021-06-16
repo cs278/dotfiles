@@ -65,6 +65,7 @@
 !/.profile.d/10-identity
 !/.profile.d/20-language
 !/.profile.d/20-tmpdir
+!/.profile.d/25-brew
 !/.profile.d/30-path
 !/.profile.d/50-programs
 !/.profile.d/50-ssh-agent

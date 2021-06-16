@@ -1,0 +1,23 @@
+if [ -d "${HOME}/.linuxbrew" ]; then
+	HOMEBREW_PREFIX="${HOME}/.linuxbrew"
+	HOMEBREW_CELLAR="${HOMEBREW_PREFIX}/Cellar"
+	HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}/Homebrew"
+
+	if [ -z "$MANPATH" ]; then
+		MANPATH="${HOMEBREW_PREFIX}/share/man"
+	else
+		MANPATH="${HOMEBREW_PREFIX}/share/man:${MANPATH}"
+	fi
+
+	if [ -z "$INFOPATH" ]; then
+		INFOPATH="${HOMEBREW_PREFIX}/share/man"
+	else
+		INFOPATH="${HOMEBREW_PREFIX}/share/man:${INFOPATH}"
+	fi
+
+	export HOMEBREW_PREFIX
+	export HOMEBREW_CELLAR
+	export HOMEBREW_REPOSITORY
+	export MANPATH
+	export INFOPATH
+fi

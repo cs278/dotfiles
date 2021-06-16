@@ -42,6 +42,12 @@ then
 	_path_unshift /snap/bin
 fi
 
+# Brew
+if [ ! -z "${HOMEBREW_PREFIX}" ]; then
+	_path_unshift "${HOMEBREW_PREFIX}/bin"
+	_path_unshift "${HOMEBREW_PREFIX}/sbin"
+fi
+
 _path_unshift "$HOME/bin"
 
 if [ -z "$PATH" ];
