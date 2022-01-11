@@ -33,3 +33,6 @@ $RECYCLE.BIN/
 
 # PhpStorm (shudder)
 .idea
+
+# Ignore VSCode configuration
+.vscode
