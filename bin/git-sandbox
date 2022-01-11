@@ -2,16 +2,23 @@
 
 # Clone the current repository into a temporary directory
 
-currentRef=$(git describe --exact-match HEAD 2>/dev/null || git rev-parse HEAD)
+repoDir="$(git rev-parse --absolute-git-dir)"
+currentRef="$(git describe --exact-match HEAD 2>/dev/null || echo HEAD)"
 
-cloneUrl=$(git config remote.origin.url)
-cloneRef=${1:-$currentRef}
+cloneUrl="$(git config remote.origin.url)"
+cloneRef="$(git rev-parse "${1:-$currentRef}")"
 
-dir=$(mktemp --directory)
-
-git clone --reference="$(git rev-parse --git-dir)" --depth=1 --branch "$cloneRef" "$cloneUrl" "$dir"
+dir="$(mktemp --directory)"
 
 cd "$dir"
+
+git init --quiet
+
+echo "$repoDir" >> "$(git rev-parse --git-dir)/objects/info/alternates"
+
+git fetch --depth 1 "$repoDir" "$cloneRef" || git fetch --depth 1 "$cloneUrl" "$cloneRef"
+
+git checkout --quiet "$cloneRef"
 
 PS1_TAG="sandbox:$cloneRef" $SHELL
 
