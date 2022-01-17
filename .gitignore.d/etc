@@ -118,5 +118,4 @@
 !/.ssh/hosts.d/*.widerplan.net/config
 !/.ssh/nmru-deploy
 !/.ssh/nmru-deploy.pub
-!/.ssh/sockets/.gitignore
 !/.ssh/sockets/README
