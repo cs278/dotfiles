@@ -1,0 +1,5 @@
+[$HOME/src/git-autofixup]
+checkout = git clone gh:torbiak/git-autofixup
+
+[$HOME/src/git-fixup]
+checkout = git clone gh:keis/git-fixup

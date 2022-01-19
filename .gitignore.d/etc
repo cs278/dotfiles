@@ -22,10 +22,12 @@
 !/.bash_logout
 !/.bash_profile
 !/.bashrc
+!/bin/git-autofixup
 !/bin/git-br-expunge
 !/bin/git-edit-index
 !/bin/git-fastforward
 !/bin/git-find-merge
+!/bin/git-fixup
 !/bin/git-inject
 !/bin/git-mkrepo
 !/bin/git-pager
@@ -37,6 +39,7 @@
 !/.config/crontab/jobs/10-tmpreaper
 !/.config/git/attributes
 !/.config/git/ignore
+!/.config/mr/available.d/git
 !/.config/nano/git.nanorc
 !/.config/vcsh/hooks-available/etc.post-command-50-ssh-compile
 !/.config/vcsh/hooks-enabled/etc.post-command-50-ssh-compile
