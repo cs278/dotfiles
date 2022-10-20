@@ -8,7 +8,7 @@ then
 	if which google-chrome >/dev/null 2>&1;
 	then
 		# I prefer Chrome
-		BROWSER=google-chrome
+		BROWSER="google-chrome --profile-email=${EMAIL}"
 	elif which x-www-browser >/dev/null 2>&1;
 	then
 		# Fallback to system default
