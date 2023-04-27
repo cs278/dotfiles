@@ -89,6 +89,7 @@
 !/.ssh/hosts.d/eva.cs278.org/config
 !/.ssh/hosts.d/router.flat.cs278.org/config
 !/.ssh/hosts.d/sandman.cs278.org/config
+!/.ssh/hosts.d/db1.widerplan.net/config
 !/.ssh/hosts.d/db1.widerplan.net/known_hosts
 !/.ssh/hosts.d/eva.cs278.org/config
 !/.ssh/hosts.d/eva.cs278.org/known_hosts
@@ -119,6 +120,7 @@
 !/.ssh/hosts.d/*.widerplan2.ent.platform.sh/config
 !/.ssh/hosts.d/*.widerplan.ent.platform.sh/config
 !/.ssh/hosts.d/*.widerplan.net/config
+!/.ssh/hosts.d/db1.widerplan.net/config
 !/.ssh/nmru-deploy
 !/.ssh/nmru-deploy.pub
 !/.ssh/sockets/README
