@@ -21,6 +21,10 @@
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
+  imports = [
+    ../../modules/home/git.nix
+  ];
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -99,11 +103,6 @@
   programs.bash.enable = true;
   programs.starship.enable = true;
   programs.vscode.enable = true;
-  programs.gh.enable = true;
-  programs.git = {
-    enable = true;
-    delta.enable = true;
-  };
   programs.ripgrep.enable = true;
 
   # Let Home Manager install and manage itself.
