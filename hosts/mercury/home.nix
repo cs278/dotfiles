@@ -23,6 +23,7 @@
 
   imports = [
     ../../modules/home/git.nix
+    ../../modules/home/nano.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
