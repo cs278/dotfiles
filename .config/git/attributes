@@ -1,6 +1,0 @@
-*.png diff=image
-*.jpg diff=image
-*.jpeg diff=image
-*.gif diff=image
-*.json diff=json
-*.php diff=php

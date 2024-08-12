@@ -1,1 +1,0 @@
-@hourly cronic with-profile sh -c 'tmpreaper --delay=120 1d $TMPDIR'

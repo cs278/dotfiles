@@ -1,2 +1,0 @@
-# Ignore EOF until 3 key presses.
-export IGNOREEOF="2"
