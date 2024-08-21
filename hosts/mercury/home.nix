@@ -91,6 +91,8 @@
   #  /etc/profiles/per-user/chris/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
+    EMAIL = "chris@cs278.org";
+    SSH_AUTH_SOCK = "${XDG_RUNTIME_DIR}/yubikey-agent/yubikey-agent.sock";
     # EDITOR = "emacs";
   };
 
