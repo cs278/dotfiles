@@ -92,7 +92,7 @@
   #
   home.sessionVariables = {
     EMAIL = "chris@cs278.org";
-    SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/yubikey-agent/yubikey-agent.sock";
+    SSH_AUTH_SOCK = "/run/user/1000/yubikey-agent/yubikey-agent.sock"; # todo remove hard coded 1000?
     # EDITOR = "emacs";
   };
 
