@@ -92,8 +92,11 @@
   #
   home.sessionVariables = {
     EMAIL = "chris@cs278.org";
-    SSH_AUTH_SOCK = "/run/user/1000/yubikey-agent/yubikey-agent.sock"; # todo remove hard coded 1000?
     # EDITOR = "emacs";
+  };
+
+  programs.bash.bashrcExtra = {
+    "export SSH_AUTH_SOCK=\"/run/user/1000/yubikey-agent/yubikey-agent.sock\""; # todo remove hard coded 100/0?
   };
 
   programs.ssh = {
