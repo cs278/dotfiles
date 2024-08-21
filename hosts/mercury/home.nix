@@ -95,9 +95,9 @@
     # EDITOR = "emacs";
   };
 
-  programs.bash.bashrcExtra = ""
+  programs.bash.bashrcExtra = ''
     export SSH_AUTH_SOCK="/run/user/$UID/yubikey-agent/yubikey-agent.sock";
-  "";
+  '';
 
   programs.ssh = {
     enable = true;
