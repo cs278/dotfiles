@@ -41,6 +41,12 @@
     wget
     deluge
     vlc
+    php83Packages.composer
+    (pkgs.php83.buildEnv {
+      extensions = ({ enabled, all }: enabled ++ (with all; [
+        xdebug
+      ]));
+    })
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
