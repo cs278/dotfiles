@@ -30,6 +30,7 @@
   # environment.
   home.packages = with pkgs; [
     google-chrome
+    firefox
     age
     bitwarden-desktop
     bitwarden-cli
